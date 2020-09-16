@@ -3,25 +3,58 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A8FCC5AB73629FCB22DD65AE /* Pods_GemApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0A7FA15418C50C813A0714 /* Pods_GemApp.framework */; };
+		FA64773F251258140031000C /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA64773E251258140031000C /* SWRevealViewController.m */; };
+		FA647741251259B70031000C /* GemApp-Bridging-Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA647740251259B70031000C /* GemApp-Bridging-Header.swift */; };
 		FAFACC0225119EE100DB1BA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC0125119EE100DB1BA8 /* AppDelegate.swift */; };
-		FAFACC0425119EE100DB1BA8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC0325119EE100DB1BA8 /* ViewController.swift */; };
 		FAFACC0725119EE100DB1BA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC0525119EE100DB1BA8 /* Main.storyboard */; };
 		FAFACC0925119EE200DB1BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC0825119EE200DB1BA8 /* Assets.xcassets */; };
 		FAFACC0C25119EE200DB1BA8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC0A25119EE200DB1BA8 /* LaunchScreen.storyboard */; };
+		FAFACC242511A03400DB1BA8 /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC142511A03400DB1BA8 /* ForgotPasswordVC.swift */; };
+		FAFACC252511A03400DB1BA8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC152511A03400DB1BA8 /* LoginVC.swift */; };
+		FAFACC262511A03400DB1BA8 /* MainMVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC162511A03400DB1BA8 /* MainMVC.swift */; };
+		FAFACC272511A03400DB1BA8 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC172511A03400DB1BA8 /* RegisterVC.swift */; };
+		FAFACC292511A03400DB1BA8 /* RockResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC192511A03400DB1BA8 /* RockResultVC.swift */; };
+		FAFACC2A2511A03400DB1BA8 /* SplashScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1A2511A03400DB1BA8 /* SplashScreenVC.swift */; };
+		FAFACC2B2511A03400DB1BA8 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1C2511A03400DB1BA8 /* Rock.swift */; };
+		FAFACC2C2511A03400DB1BA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1E2511A03400DB1BA8 /* Constants.swift */; };
+		FAFACC2D2511A03400DB1BA8 /* customTextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1F2511A03400DB1BA8 /* customTextBox.swift */; };
+		FAFACC2E2511A03400DB1BA8 /* GemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC202511A03400DB1BA8 /* GemTableViewCell.swift */; };
+		FAFACC2F2511A03400DB1BA8 /* RockResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC212511A03400DB1BA8 /* RockResult.swift */; };
+		FAFACC302511A03400DB1BA8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC232511A03400DB1BA8 /* DataService.swift */; };
+		FAFACC322511B42F00DB1BA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC312511B42F00DB1BA8 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		59E763E990F62DEA082F3F10 /* Pods-GemApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GemApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GemApp/Pods-GemApp.debug.xcconfig"; sourceTree = "<group>"; };
+		7F0A7FA15418C50C813A0714 /* Pods_GemApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GemApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E0481BD9362AB1B96F4C8EEA /* Pods-GemApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GemApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GemApp/Pods-GemApp.release.xcconfig"; sourceTree = "<group>"; };
+		FA64773D251258140031000C /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		FA64773E251258140031000C /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		FA647740251259B70031000C /* GemApp-Bridging-Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GemApp-Bridging-Header.swift"; sourceTree = "<group>"; };
 		FAFACBFE25119EE100DB1BA8 /* GemApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GemApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFACC0125119EE100DB1BA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FAFACC0325119EE100DB1BA8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FAFACC0625119EE100DB1BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FAFACC0825119EE200DB1BA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FAFACC0B25119EE200DB1BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FAFACC0D25119EE200DB1BA8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAFACC142511A03400DB1BA8 /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
+		FAFACC152511A03400DB1BA8 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		FAFACC162511A03400DB1BA8 /* MainMVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMVC.swift; sourceTree = "<group>"; };
+		FAFACC172511A03400DB1BA8 /* RegisterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		FAFACC192511A03400DB1BA8 /* RockResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RockResultVC.swift; sourceTree = "<group>"; };
+		FAFACC1A2511A03400DB1BA8 /* SplashScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenVC.swift; sourceTree = "<group>"; };
+		FAFACC1C2511A03400DB1BA8 /* Rock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
+		FAFACC1E2511A03400DB1BA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FAFACC1F2511A03400DB1BA8 /* customTextBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTextBox.swift; sourceTree = "<group>"; };
+		FAFACC202511A03400DB1BA8 /* GemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GemTableViewCell.swift; sourceTree = "<group>"; };
+		FAFACC212511A03400DB1BA8 /* RockResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RockResult.swift; sourceTree = "<group>"; };
+		FAFACC232511A03400DB1BA8 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		FAFACC312511B42F00DB1BA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +62,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8FCC5AB73629FCB22DD65AE /* Pods_GemApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D8C116B81453520869B5850 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F0A7FA15418C50C813A0714 /* Pods_GemApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E68EEC61ABD698849985DC03 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				59E763E990F62DEA082F3F10 /* Pods-GemApp.debug.xcconfig */,
+				E0481BD9362AB1B96F4C8EEA /* Pods-GemApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FA64773C251258140031000C /* SWRevealViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA64773D251258140031000C /* SWRevealViewController.h */,
+				FA64773E251258140031000C /* SWRevealViewController.m */,
+			);
+			name = SWRevealViewController;
+			path = "../../../../Downloads/SWRevealViewController-master/SWRevealViewController/SWRevealViewController-master/SWRevealViewController";
+			sourceTree = "<group>";
+		};
 		FAFACBF525119EE100DB1BA8 = {
 			isa = PBXGroup;
 			children = (
 				FAFACC0025119EE100DB1BA8 /* GemApp */,
 				FAFACBFF25119EE100DB1BA8 /* Products */,
+				E68EEC61ABD698849985DC03 /* Pods */,
+				2D8C116B81453520869B5850 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +117,60 @@
 		FAFACC0025119EE100DB1BA8 /* GemApp */ = {
 			isa = PBXGroup;
 			children = (
+				FAFACC132511A03400DB1BA8 /* Controllers */,
+				FAFACC1B2511A03400DB1BA8 /* Models */,
+				FAFACC222511A03400DB1BA8 /* Services */,
+				FAFACC1D2511A03400DB1BA8 /* Views */,
 				FAFACC0125119EE100DB1BA8 /* AppDelegate.swift */,
-				FAFACC0325119EE100DB1BA8 /* ViewController.swift */,
 				FAFACC0525119EE100DB1BA8 /* Main.storyboard */,
 				FAFACC0825119EE200DB1BA8 /* Assets.xcassets */,
 				FAFACC0A25119EE200DB1BA8 /* LaunchScreen.storyboard */,
+				FAFACC312511B42F00DB1BA8 /* GoogleService-Info.plist */,
 				FAFACC0D25119EE200DB1BA8 /* Info.plist */,
 			);
 			path = GemApp;
+			sourceTree = "<group>";
+		};
+		FAFACC132511A03400DB1BA8 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA64773C251258140031000C /* SWRevealViewController */,
+				FAFACC142511A03400DB1BA8 /* ForgotPasswordVC.swift */,
+				FAFACC152511A03400DB1BA8 /* LoginVC.swift */,
+				FAFACC162511A03400DB1BA8 /* MainMVC.swift */,
+				FAFACC172511A03400DB1BA8 /* RegisterVC.swift */,
+				FAFACC192511A03400DB1BA8 /* RockResultVC.swift */,
+				FAFACC1A2511A03400DB1BA8 /* SplashScreenVC.swift */,
+				FA647740251259B70031000C /* GemApp-Bridging-Header.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FAFACC1B2511A03400DB1BA8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FAFACC1C2511A03400DB1BA8 /* Rock.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FAFACC1D2511A03400DB1BA8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FAFACC1E2511A03400DB1BA8 /* Constants.swift */,
+				FAFACC1F2511A03400DB1BA8 /* customTextBox.swift */,
+				FAFACC202511A03400DB1BA8 /* GemTableViewCell.swift */,
+				FAFACC212511A03400DB1BA8 /* RockResult.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FAFACC222511A03400DB1BA8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FAFACC232511A03400DB1BA8 /* DataService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +180,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAFACC1025119EE200DB1BA8 /* Build configuration list for PBXNativeTarget "GemApp" */;
 			buildPhases = (
+				9D19A40113AE746080DABD9D /* [CP] Check Pods Manifest.lock */,
 				FAFACBFA25119EE100DB1BA8 /* Sources */,
 				FAFACBFB25119EE100DB1BA8 /* Frameworks */,
 				FAFACBFC25119EE100DB1BA8 /* Resources */,
+				C5A834E8B19856D17D272BEA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFACC0C25119EE200DB1BA8 /* LaunchScreen.storyboard in Resources */,
+				FAFACC322511B42F00DB1BA8 /* GoogleService-Info.plist in Resources */,
 				FAFACC0925119EE200DB1BA8 /* Assets.xcassets in Resources */,
 				FAFACC0725119EE100DB1BA8 /* Main.storyboard in Resources */,
 			);
@@ -130,13 +242,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9D19A40113AE746080DABD9D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GemApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C5A834E8B19856D17D272BEA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GemApp/Pods-GemApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GemApp/Pods-GemApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GemApp/Pods-GemApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FAFACBFA25119EE100DB1BA8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFACC0425119EE100DB1BA8 /* ViewController.swift in Sources */,
+				FAFACC2B2511A03400DB1BA8 /* Rock.swift in Sources */,
+				FAFACC2C2511A03400DB1BA8 /* Constants.swift in Sources */,
+				FAFACC262511A03400DB1BA8 /* MainMVC.swift in Sources */,
+				FAFACC2A2511A03400DB1BA8 /* SplashScreenVC.swift in Sources */,
 				FAFACC0225119EE100DB1BA8 /* AppDelegate.swift in Sources */,
+				FAFACC2F2511A03400DB1BA8 /* RockResult.swift in Sources */,
+				FAFACC2D2511A03400DB1BA8 /* customTextBox.swift in Sources */,
+				FA64773F251258140031000C /* SWRevealViewController.m in Sources */,
+				FAFACC302511A03400DB1BA8 /* DataService.swift in Sources */,
+				FAFACC2E2511A03400DB1BA8 /* GemTableViewCell.swift in Sources */,
+				FAFACC292511A03400DB1BA8 /* RockResultVC.swift in Sources */,
+				FA647741251259B70031000C /* GemApp-Bridging-Header.swift in Sources */,
+				FAFACC272511A03400DB1BA8 /* RegisterVC.swift in Sources */,
+				FAFACC252511A03400DB1BA8 /* LoginVC.swift in Sources */,
+				FAFACC242511A03400DB1BA8 /* ForgotPasswordVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +443,7 @@
 		};
 		FAFACC1125119EE200DB1BA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 59E763E990F62DEA082F3F10 /* Pods-GemApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +461,7 @@
 		};
 		FAFACC1225119EE200DB1BA8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0481BD9362AB1B96F4C8EEA /* Pods-GemApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

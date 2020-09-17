@@ -8,18 +8,25 @@
 
 import UIKit
 
-class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var tempArray: [Rock] = []
+    var tempArray: [Rock] = DataService.globalData.rockList
     
     
      // var rocks = [Rock]()
 
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideMenus()
+        customizeNavBar()
+     
+        
         /*
         
         let r1 = Rock(name: "rock1", description: "<#T##String#>", color: "<#T##String#>", key: "1")
@@ -34,6 +41,8 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
       tableView.delegate = self
       tableView.dataSource = self
+      searchBar.delegate = self
+      
      
 
         
@@ -43,11 +52,24 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         
         // Do any additional setup after loading the view, /Users/MacBook/Projects/gem app/gem app/Views/GemTableViewCell.swifttypically from a nib.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+          tableView.reloadData()
+        /*
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
+            self.view.window?.rootViewController = vc
+        if self.revealViewController() == nil{
+            print("shan: sorry")
+        }
+ */
+        
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "GemTableViewCell", for: indexPath) as? GemTableViewCell{
             
           //  let tempRock = rocks[indexPath.row]
-            let tempRock = DataService.globalData.rockList[indexPath.row]
+            let tempRock = tempArray[indexPath.row]
             
             cell.updateUi(rock: tempRock)
             
@@ -59,10 +81,10 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        // return rocks.count
-        return DataService.globalData.rockList.count
+        return tempArray.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let rock = DataService.globalData.rockList[indexPath.row]
+        let rock = tempArray[indexPath.row]
         //let rock = rocks[indexPath.row]
         performSegue(withIdentifier: "RockResult", sender: rock)
     }
@@ -74,15 +96,57 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         }
     }
     }
-    @IBAction func didTapMenuButton(_ sender: Any) {
+
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard !searchText.isEmpty else {tempArray = DataService.globalData.rockList
+            tableView.reloadData()
+            return
+            
+        }
+        
+        tempArray = DataService.globalData.rockList.filter({ (rock) -> Bool in
+            guard let text = searchBar.text?.lowercased() else {return false}
+            //return rock.month?.lowercased().contains(text)
+            if rock.name.contains(text) || (rock.month != nil  && (rock.month?.lowercased().contains(text))!) || rock.description.contains(text)
+            {
+                return true
+            }
+            return false
+           // return rock.name.contains(text)
+        })
+        tableView.reloadData()
+        
+        
+        //  tempArray = DataService.globalData.rockList.filter({$0.prefix(searchText.count) == searchText})
+    }
+    
+   
+    func sideMenus(){
+      
+        if revealViewController() != nil{
+        
+           menuButton.target = revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            revealViewController().rearViewRevealWidth = 275
+            revealViewController()?.rightViewRevealWidth = 160
+            
+            view.addGestureRecognizer((self.revealViewController()!.panGestureRecognizer()))
+            
+        }
+        else{print("shan: tis nil")}
+ 
+    }
+    
+    func customizeNavBar(){
+        navigationController?.navigationBar.tintColor = UIColor.gray
+        navigationController?.navigationBar.barTintColor = UIColor.blue
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
     }
 }
 
-extension UIViewController: UISearchBarDelegate{
-    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
-      //  tempArray = DataService.globalData.rockList.filter({$0.prefix(searchText.count) == searchText})
-    }
-}
+
+ 
+    
 

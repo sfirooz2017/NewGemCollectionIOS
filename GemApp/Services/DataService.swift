@@ -50,6 +50,57 @@ class DataService{
     func createFirebaseUser(uid: String){
         REF_USERS.child(uid).setValue(uid)
     }
+    func logIn(email: String, password: String)-> Bool
+    {
+        var validated = false;
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if error == nil{
+                //sign in successful
+                print("shan: user in")
+                //  DataService.globalData.createFirebaseUser(uid: email.lowercased().replacingOccurrences(of: ".", with: "_"))
+                //add option with settig parent
+             //  return true
+                validated = true
+            }
+            else{
+             print("shan: error")
+                /*
+                 Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+                 if(error != nil)
+                 {
+                 //success
+                 }
+                 })
+                
+                 */
+            }
+        }
+            return validated
+    }
+    func createUser(email: String, password: String)->Bool{
+        var validated = false
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+            if(error != nil)
+            {
+                validated = true
+                //success
+            }
+        })
+        return validated
+    }
+    func resetPassword(email: String){
+        Auth.auth().sendPasswordReset(withEmail: email) { (error) in
+            
+            if error != nil{
+                print("not a valid email")
+            }
+            else
+            {
+                print("email will be sent shortly!")
+            }
+            
+        }
+    }
     func writeData(data: String, path: String)
        {
         REF_BASE.child(path).child(data).setValue(data)
@@ -60,28 +111,39 @@ class DataService{
           REF_BASE.child(path).child(data).removeValue()
         
     }
-    func uploadImg(key: String, imgUrl: URL)
+    func uploadImg(key: String, imgData: Data, metadata: StorageMetadata) -> Bool
     {
+        var uploaded = false;
         let tempRef = REF_IMAGES.child(currentUser).child(key)
+        print("shan\(imgData)")
 
         // Upload the file to the path "images/rivers.jpg"
-        let uploadTask = tempRef.putFile(from: imgUrl, metadata: nil) { metadata, error in
+        tempRef.putData(imgData, metadata: metadata, completion: { (metadata, error) in
+           if error == nil
+           {
             // You can also access to download URL after upload.
             tempRef.downloadURL { (url, error) in
-                if error != nil
+                if error == nil
                 {
-                let downloadURL = url
-                self.REF_USERS.child(self.currentUser).child("rocks").child(key).child(key).setValue("\(downloadURL)")
-                    
-                    print(url)
+                    let downloadURL = url
+                    self.REF_USERS.child(self.currentUser).child("rocks").child(key).child(key).setValue("\(downloadURL!)")
+                    uploaded = true
+                    print(url!)
                 }
-                    else {
+                else {
                     print("Error: Img couldn't download")
                     // Uh-oh, an error occurred!
                     return
                 }
             }
-        }
+            }
+            else
+           {
+            print("shan: didnt work")
+            }
+            
+        })
+        return uploaded
     }
     func deleteIMG(key: String)
     {
@@ -90,7 +152,7 @@ class DataService{
         
         // Delete the file
         tempRef.delete { error in
-            if let error = error {
+            if error == nil {
                 print(" Uh-oh, an error occurred!")
             } else {
                 print("File deleted successfully")

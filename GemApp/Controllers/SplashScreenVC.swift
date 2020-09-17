@@ -66,7 +66,8 @@ class SplashScreenVC: UIViewController {
                     print(img)
                             let url = URL(string: img)
                             let data = try? Data(contentsOf: url!)
-                    DataService.globalData.rockList[index!].imageURL = data
+                        let image = UIImage(data: data!)
+                    DataService.globalData.rockList[index!].imageURL = image
 
                     // print( snap.value as? String)
                     }

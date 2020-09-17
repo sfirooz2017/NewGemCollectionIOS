@@ -8,11 +8,21 @@
 
 import UIKit
 
+
 class RegisterVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        func isValidEmail(testStr:String) -> Bool {
+            let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
+            let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
+            return emailTest.evaluate(with: testStr)
+        }
+        func isValidPassword(password:String)->Bool{
+           return password.count > 6
+        }
         // Do any additional setup after loading the view.
     }
     

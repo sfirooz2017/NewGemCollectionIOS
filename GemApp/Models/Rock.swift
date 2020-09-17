@@ -9,7 +9,7 @@
 import Foundation
 
 class Rock{
-    private var _imageURL: Data?
+    private var _imageURL: UIImage?
     private var _month: String?
     private var _color: String!
     private var _description: String!
@@ -41,7 +41,7 @@ class Rock{
         set
         {_collected = newValue}
     }
-    var imageURL: Data?{
+    var imageURL: UIImage?{
         get
         {return _imageURL}
         set

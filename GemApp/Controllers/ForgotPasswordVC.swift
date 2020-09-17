@@ -15,6 +15,22 @@ class ForgotPasswordVC: UIViewController {
     
     @IBOutlet weak var submitButton: UIButton!
     
-   // func sendPasswordReset(withEmail email: String, completion: ((Error?) -> Void)? = nil)
-
+   //
+    override func viewDidAppear(_ animated: Bool) {
+        
+    }
+    @IBAction func submitTapped(_ sender: Any) {
+      
+        if (emailTextBox.text?.isEmpty)!
+        {
+            print("must enter an email")
+        }
+        else
+        {
+            
+        
+            DataService.globalData.resetPassword(email: emailTextBox.text!)
+    }
+    }
+    
 }

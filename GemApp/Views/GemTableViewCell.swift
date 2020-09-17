@@ -60,10 +60,10 @@ class GemTableViewCell: UITableViewCell {
          let url = URL(string: rock.imageURL!)
             let data = try? Data(contentsOf: url!)
             */
-            if let imageData = rock.imageURL{
-                let image = UIImage(data: imageData)
-                imgPreview.image = image
-            }
+           // if let imageData = rock.imageURL{
+             //   let image = UIImage(data: imageData)
+                imgPreview.image = rock.imageURL
+            //}
             
           //  imgPreview.image = url
         }

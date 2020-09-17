@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -41,7 +41,7 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         imagePicker.delegate = self
        
         
-        self.dismiss(animated: true, completion: nil)
+        //self.dismiss(animated: true, completion: nil)
         
         //collectionCheck()
         titleLbl.text = rock.name
@@ -51,10 +51,10 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         }
         else
         {
-            if let imageData = rock.imageURL{
-                let image = UIImage(data: imageData)
-                imgView.image = image
-            }
+            //if let imageData = rock.imageURL{
+             //   let image = UIImage(data: imageData)
+                imgView.image = rock.imageURL
+           // }
         }
         
         colorView.backgroundColor = hexStringToUIColor(hex: rock.color)
@@ -156,8 +156,13 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         
        // if let imgDaa = UIImageJPEGRepresentation(image, 0.2){
             if let imgData = image.jpegData(compressionQuality: 0.2){
-            let imgUid = NSUUID().uuidString
-           // let metadata = metadata
+            let metadata = StorageMetadata()
+                metadata.contentType = "image.jpeg"
+               if DataService.globalData.uploadImg(key: rock.key, imgData: imgData, metadata: metadata)
+               {
+                rock.imageURL = image
+                }
+                // let metadata = metadata
         }
             
         

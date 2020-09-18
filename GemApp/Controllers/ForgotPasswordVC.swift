@@ -17,6 +17,7 @@ class ForgotPasswordVC: UIViewController {
     
    //
     override func viewDidAppear(_ animated: Bool) {
+        title = "Forgot Password"
         
     }
     @IBAction func submitTapped(_ sender: Any) {

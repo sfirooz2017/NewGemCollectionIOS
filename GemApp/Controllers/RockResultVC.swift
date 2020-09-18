@@ -18,6 +18,7 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var uploadButton: UIButton!
     var imagePicker: UIImagePickerController!
     
@@ -45,6 +46,8 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         
         //collectionCheck()
         titleLbl.text = rock.name
+      
+        
            if(rock.imageURL == nil)
            {
         imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
@@ -54,6 +57,7 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
             //if let imageData = rock.imageURL{
              //   let image = UIImage(data: imageData)
                 imgView.image = rock.imageURL
+            removeButton.isHidden = false
            // }
         }
         
@@ -127,20 +131,11 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     }
     */
 
-    @IBAction func uploadPressed(_ sender: Any) {
-        
-        
     
+    @IBAction func removeImage(_ sender: Any) {
+        removeIMG()
     }
-    @IBAction func addPressed(_ sender: Any) {
-        collectionCheck()
-    }
-    func uploadIMG(){
-       
-      //  ref.getData(maxSize: 2 * 1024 * 1024) { (data, error) in
-            
-        
-    }
+    
     func removeIMG()
     {
         imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
@@ -148,6 +143,16 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         DataService.globalData.deleteIMG(key: rock.key)
         DataService.globalData.writeData(data: rock.key, path: "users/\(DataService.globalData.currentUser)/rocks")
     }
+    
+    @IBAction func uploadPressed(_ sender: Any) {
+         present(imagePicker, animated: true, completion: nil)
+        
+    }
+    @IBAction func addPressed(_ sender: Any) {
+        collectionCheck()
+    }
+    
+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[.editedImage] as? UIImage
             //if let image = info[] as? UIImage
@@ -169,9 +174,6 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         imagePicker.dismiss(animated: true, completion: nil)
     }
     }
-    @IBAction func uploadButtonPressed(_ sender: Any) {
-        present(imagePicker, animated: true, completion: nil)
-        
-    }
+
 }
 

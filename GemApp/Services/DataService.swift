@@ -80,7 +80,7 @@ class DataService{
     func createUser(email: String, password: String)->Bool{
         var validated = false
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
-            if(error != nil)
+            if error == nil
             {
                 validated = true
                 //success
@@ -153,9 +153,10 @@ class DataService{
         // Delete the file
         tempRef.delete { error in
             if error == nil {
-                print(" Uh-oh, an error occurred!")
+                 print("File deleted successfully")
+               
             } else {
-                print("File deleted successfully")
+                print(" Uh-oh, an error occurred!")
             }
         }
         

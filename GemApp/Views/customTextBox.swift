@@ -16,6 +16,7 @@ class customTextBox: UITextField {
         layer.borderWidth = 3.0
         backgroundColor = UIColor.black
         textColor = UIColor.white
+        attributedPlaceholder = NSAttributedString(string: placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
      
         
     }

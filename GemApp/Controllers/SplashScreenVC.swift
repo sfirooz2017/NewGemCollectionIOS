@@ -19,7 +19,6 @@ class SplashScreenVC: UIViewController {
     
     DataService.globalData.REF_ROCKS.queryOrdered(byChild: "color").observe(.value, with: {(snapshot) in
     if let snapshot = snapshot.children.allObjects as? [DataSnapshot]{
-        print("1")
     for snap in snapshot{
     let value = snap.value as? NSDictionary
     let name = value?["name"] as? String
@@ -50,7 +49,6 @@ class SplashScreenVC: UIViewController {
         
     
     })
-            print("2")
             
                 func loadUserData(){
                 //order by color

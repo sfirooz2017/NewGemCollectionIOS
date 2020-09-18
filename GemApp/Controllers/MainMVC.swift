@@ -42,7 +42,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
       tableView.delegate = self
       tableView.dataSource = self
       searchBar.delegate = self
-      
+      tableView.reloadData()
      
 
         
@@ -54,7 +54,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-          tableView.reloadData()
+      
         /*
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
@@ -128,7 +128,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
            menuButton.target = revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             revealViewController().rearViewRevealWidth = 275
-            revealViewController()?.rightViewRevealWidth = 160
+
             
             view.addGestureRecognizer((self.revealViewController()!.panGestureRecognizer()))
             
@@ -138,8 +138,8 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
     
     func customizeNavBar(){
-        navigationController?.navigationBar.tintColor = UIColor.gray
-        navigationController?.navigationBar.barTintColor = UIColor.blue
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
     }

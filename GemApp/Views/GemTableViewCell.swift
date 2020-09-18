@@ -52,7 +52,7 @@ class GemTableViewCell: UITableViewCell {
         
         titlePreview.text = rock.name
         colorPreview.backgroundColor = hexStringToUIColor(hex: rock.color)
-        colorPreview.layer.cornerRadius = 5
+        colorPreview.layer.cornerRadius = 15
         
         if(rock.imageURL != nil)
         {

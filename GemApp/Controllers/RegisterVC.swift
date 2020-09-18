@@ -11,8 +11,18 @@ import UIKit
 
 class RegisterVC: UIViewController {
 
+    @IBOutlet weak var emailTB: customTextBox!
+   
+  
+    @IBOutlet weak var passwordTB: customTextBox!
+    
+    @IBOutlet weak var confirmPasswordTB: customTextBox!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Register"
+        
+    }
 
         
         func isValidEmail(testStr:String) -> Bool {
@@ -23,18 +33,43 @@ class RegisterVC: UIViewController {
         func isValidPassword(password:String)->Bool{
            return password.count > 6
         }
-        // Do any additional setup after loading the view.
-    }
-    
 
-    /*
-    // MARK: - Navigation
+    @IBAction func registerTapped(_ sender: Any) {
+        if let email = emailTB.text, let password = passwordTB.text, let confirmPassword = confirmPasswordTB.text
+        {
+            if email.isEmpty || password.isEmpty || confirmPassword.isEmpty
+        {
+            print("please fill all fields")
+            return
+        }
+        if !(isValidEmail(testStr: email))
+        {
+            print("please enter a valid email")
+            return
+        }
+        if !(isValidPassword(password: password)){
+            print("password must be over 6 characters long")
+            return
+        }
+        if (password != confirmPassword)
+        {
+            print("passwords do not match")
+            return
+        }
+        if (DataService.globalData.createUser(email: email, password: password))
+        {
+            print("account successfully created!")
+            DataService.globalData.createFirebaseUser(uid: email.replacingOccurrences(of: ".", with: "_").lowercased())
+            DataService.globalData.currentUser = email.replacingOccurrences(of: ".", with: "_").lowercased()
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        }
+        else
+        {
+            print("could not create account. Try again.")
+        }
+        }
+      
     }
-    */
+
 
 }

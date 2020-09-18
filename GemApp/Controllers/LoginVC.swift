@@ -26,14 +26,9 @@ class LoginVC: UIViewController {
          title = "Log In"
         
         if Auth.auth().currentUser != nil{
-        let isLoggedIn = UserDefaults.standard.bool(forKey: "logged_in")
-        if !isLoggedIn{
-            
-            
-        }
+       
         }
         
-        // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
     
@@ -46,11 +41,19 @@ class LoginVC: UIViewController {
         performSegue(withIdentifier: "showForgotPassword", sender: nil)
     }
     
+    @IBAction func registerTapped(_ sender: Any) {
+        performSegue(withIdentifier: "showRegister", sender: nil)
+        
+    }
     @IBAction func signInTapped(_ sender: Any) {
     
     
     if let email = emailField.text, let password = passwordField.text
     {
+        if email.isEmpty || password.isEmpty {
+            print("must fill all fields")
+            return
+        }
        if DataService.globalData.logIn(email: email, password: password)
        {
         DataService.globalData.currentUser = email.lowercased().replacingOccurrences(of: ".", with: "_")
@@ -64,24 +67,8 @@ class LoginVC: UIViewController {
         }
  
         }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+  
     }
-    */
-    }
-    /*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? RockResultVC{
-            
-        }
-    }
- */
 
     func sideMenus(){
         
@@ -90,8 +77,7 @@ class LoginVC: UIViewController {
             MenuBtn.target = revealViewController()
             MenuBtn.action = #selector(SWRevealViewController.revealToggle(_:))
             revealViewController().rearViewRevealWidth = 275
-            revealViewController()?.rightViewRevealWidth = 160
-            
+    
             view.addGestureRecognizer((self.revealViewController()!.panGestureRecognizer()))
             
         }
@@ -100,8 +86,8 @@ class LoginVC: UIViewController {
     }
     
     func customizeNavBar(){
-        navigationController?.navigationBar.tintColor = UIColor.gray
-        navigationController?.navigationBar.barTintColor = UIColor.blue
+        navigationController?.navigationBar.tintColor = UIColor.white
+        navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
     }

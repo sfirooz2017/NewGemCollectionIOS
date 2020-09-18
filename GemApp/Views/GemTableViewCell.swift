@@ -23,34 +23,18 @@ class GemTableViewCell: UITableViewCell {
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
+        super.setSelected(selected, animated: false)
 
         // Configure the view for the selected state
     }
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-        
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-        
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
+   
     func updateUi(rock: Rock){
         
+        
+        //layer.backgroundColor = (UIColor.blue as! CGColor)
+        //self.layer.backgroundColor = (hexStringToUIColor(hex: "ECEAEA") as! CGColor)
         titlePreview.text = rock.name
+    
         colorPreview.backgroundColor = hexStringToUIColor(hex: rock.color)
         colorPreview.layer.cornerRadius = 15
         

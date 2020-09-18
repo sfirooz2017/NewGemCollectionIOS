@@ -25,13 +25,15 @@ class ForgotPasswordVC: UIViewController {
         if (emailTextBox.text?.isEmpty)!
         {
             print("must enter an email")
+            return
         }
-        else
+        if !(isValidEmail(testStr: emailTextBox.text!))
         {
             
-        
-            DataService.globalData.resetPassword(email: emailTextBox.text!)
+        print("please enter a valid email")
+           return
     }
+         DataService.globalData.resetPassword(email: emailTextBox.text!)
     }
     
 }

@@ -10,6 +10,7 @@
 		A8FCC5AB73629FCB22DD65AE /* Pods_GemApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0A7FA15418C50C813A0714 /* Pods_GemApp.framework */; };
 		FA4D9FD925126D8000543102 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4D9FD825126D8000543102 /* SWRevealViewController.m */; };
 		FA4D9FDD2513F99400543102 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D9FDC2513F99400543102 /* MenuTableViewController.swift */; };
+		FA9A3B6325150545006BB5E2 /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9A3B6225150544006BB5E2 /* UIImageViewAligned.m */; };
 		FAFACC0225119EE100DB1BA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC0125119EE100DB1BA8 /* AppDelegate.swift */; };
 		FAFACC0725119EE100DB1BA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC0525119EE100DB1BA8 /* Main.storyboard */; };
 		FAFACC0925119EE200DB1BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC0825119EE200DB1BA8 /* Assets.xcassets */; };
@@ -21,7 +22,7 @@
 		FAFACC292511A03400DB1BA8 /* RockResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC192511A03400DB1BA8 /* RockResultVC.swift */; };
 		FAFACC2A2511A03400DB1BA8 /* SplashScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1A2511A03400DB1BA8 /* SplashScreenVC.swift */; };
 		FAFACC2B2511A03400DB1BA8 /* Rock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1C2511A03400DB1BA8 /* Rock.swift */; };
-		FAFACC2C2511A03400DB1BA8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1E2511A03400DB1BA8 /* Constants.swift */; };
+		FAFACC2C2511A03400DB1BA8 /* commonFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1E2511A03400DB1BA8 /* commonFuncs.swift */; };
 		FAFACC2D2511A03400DB1BA8 /* customTextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1F2511A03400DB1BA8 /* customTextBox.swift */; };
 		FAFACC2E2511A03400DB1BA8 /* GemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC202511A03400DB1BA8 /* GemTableViewCell.swift */; };
 		FAFACC2F2511A03400DB1BA8 /* RockResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC212511A03400DB1BA8 /* RockResult.swift */; };
@@ -37,6 +38,8 @@
 		FA4D9FD725126D7900543102 /* GemApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GemApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA4D9FD825126D8000543102 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		FA4D9FDC2513F99400543102 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		FA9A3B6125150530006BB5E2 /* UIImageViewAligned.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImageViewAligned.h; sourceTree = "<group>"; };
+		FA9A3B6225150544006BB5E2 /* UIImageViewAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAligned.m; sourceTree = "<group>"; };
 		FAFACBFE25119EE100DB1BA8 /* GemApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GemApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFACC0125119EE100DB1BA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAFACC0625119EE100DB1BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -50,7 +53,7 @@
 		FAFACC192511A03400DB1BA8 /* RockResultVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RockResultVC.swift; sourceTree = "<group>"; };
 		FAFACC1A2511A03400DB1BA8 /* SplashScreenVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashScreenVC.swift; sourceTree = "<group>"; };
 		FAFACC1C2511A03400DB1BA8 /* Rock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rock.swift; sourceTree = "<group>"; };
-		FAFACC1E2511A03400DB1BA8 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FAFACC1E2511A03400DB1BA8 /* commonFuncs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commonFuncs.swift; sourceTree = "<group>"; };
 		FAFACC1F2511A03400DB1BA8 /* customTextBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTextBox.swift; sourceTree = "<group>"; };
 		FAFACC202511A03400DB1BA8 /* GemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GemTableViewCell.swift; sourceTree = "<group>"; };
 		FAFACC212511A03400DB1BA8 /* RockResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RockResult.swift; sourceTree = "<group>"; };
@@ -97,6 +100,15 @@
 			path = SWRevealViewController;
 			sourceTree = "<group>";
 		};
+		FA9A3B6025150516006BB5E2 /* UIImageViewAligned */ = {
+			isa = PBXGroup;
+			children = (
+				FA9A3B6225150544006BB5E2 /* UIImageViewAligned.m */,
+				FA9A3B6125150530006BB5E2 /* UIImageViewAligned.h */,
+			);
+			path = UIImageViewAligned;
+			sourceTree = "<group>";
+		};
 		FAFACBF525119EE100DB1BA8 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +130,7 @@
 		FAFACC0025119EE100DB1BA8 /* GemApp */ = {
 			isa = PBXGroup;
 			children = (
+				FA9A3B6025150516006BB5E2 /* UIImageViewAligned */,
 				FA647746251269610031000C /* SWRevealViewController */,
 				FAFACC132511A03400DB1BA8 /* Controllers */,
 				FAFACC1B2511A03400DB1BA8 /* Models */,
@@ -137,9 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				FAFACC142511A03400DB1BA8 /* ForgotPasswordVC.swift */,
+				FAFACC172511A03400DB1BA8 /* RegisterVC.swift */,
 				FAFACC152511A03400DB1BA8 /* LoginVC.swift */,
 				FAFACC162511A03400DB1BA8 /* MainMVC.swift */,
-				FAFACC172511A03400DB1BA8 /* RegisterVC.swift */,
 				FAFACC192511A03400DB1BA8 /* RockResultVC.swift */,
 				FAFACC1A2511A03400DB1BA8 /* SplashScreenVC.swift */,
 				FA4D9FDC2513F99400543102 /* MenuTableViewController.swift */,
@@ -158,7 +171,6 @@
 		FAFACC1D2511A03400DB1BA8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				FAFACC1E2511A03400DB1BA8 /* Constants.swift */,
 				FAFACC1F2511A03400DB1BA8 /* customTextBox.swift */,
 				FAFACC202511A03400DB1BA8 /* GemTableViewCell.swift */,
 				FAFACC212511A03400DB1BA8 /* RockResult.swift */,
@@ -169,6 +181,7 @@
 		FAFACC222511A03400DB1BA8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				FAFACC1E2511A03400DB1BA8 /* commonFuncs.swift */,
 				FAFACC232511A03400DB1BA8 /* DataService.swift */,
 			);
 			path = Services;
@@ -288,7 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFACC2B2511A03400DB1BA8 /* Rock.swift in Sources */,
-				FAFACC2C2511A03400DB1BA8 /* Constants.swift in Sources */,
+				FAFACC2C2511A03400DB1BA8 /* commonFuncs.swift in Sources */,
 				FA4D9FDD2513F99400543102 /* MenuTableViewController.swift in Sources */,
 				FAFACC262511A03400DB1BA8 /* MainMVC.swift in Sources */,
 				FAFACC2A2511A03400DB1BA8 /* SplashScreenVC.swift in Sources */,
@@ -302,6 +315,7 @@
 				FAFACC272511A03400DB1BA8 /* RegisterVC.swift in Sources */,
 				FAFACC252511A03400DB1BA8 /* LoginVC.swift in Sources */,
 				FAFACC242511A03400DB1BA8 /* ForgotPasswordVC.swift in Sources */,
+				FA9A3B6325150545006BB5E2 /* UIImageViewAligned.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -45,65 +45,55 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         //self.dismiss(animated: true, completion: nil)
         
         //collectionCheck()
-        titleLbl.text = rock.name
-      
+        titleLbl.text = rock.name.capitalized
+        title = rock.name.capitalized
         
-           if(rock.imageURL == nil)
-           {
-        imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
+        if rock.collected != nil && rock.collected!
+            
+        {
+            uploadButton.isHidden = false
+            addButton.setBackgroundImage(UIImage(named: "heartpink"), for: UIControl.State.normal )
+
+            if rock.imageURL != nil{
+                
+                imgView.image = rock.imageURL
+                removeButton.isHidden = false
+            }
+            
+            
         }
         else
         {
-            //if let imageData = rock.imageURL{
-             //   let image = UIImage(data: imageData)
-                imgView.image = rock.imageURL
-            removeButton.isHidden = false
-           // }
+            removeButton.isHidden = true
+            addButton.setBackgroundImage(UIImage(named: "heart"), for: UIControl.State.normal )
+            imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
         }
         
+      
+        
+
         colorView.backgroundColor = hexStringToUIColor(hex: rock.color)
    
         if (rock.month != nil){
-            monthLbl.text = rock.month
+            monthLbl.text = rock.month?.uppercased()
         }
         else
         {
             monthLbl.isHidden = true
         }
         descriptionLbl.text = rock.description
-        // Do any additional setup after loading the view.
+      
     }
-    func hexStringToUIColor (hex:String) -> UIColor {
-        var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
-        
-        if (cString.hasPrefix("#")) {
-            cString.remove(at: cString.startIndex)
-        }
-        
-        if ((cString.count) != 6) {
-            return UIColor.gray
-        }
-        
-        var rgbValue:UInt64 = 0
-        Scanner(string: cString).scanHexInt64(&rgbValue)
-        
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
+   
     func collectionCheck()
     {
         if rock.collected != nil && rock.collected!
       
             {
                 rock.collected = false
-                 uploadButton.isHidden = true
+                uploadButton.isHidden = true
                 if rock.imageURL != nil{
-                    rock.imageURL = nil
-                    imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
+                   removeIMG()
                     
                 }
                 DataService.globalData.removeData(data: rock.key, path: "users/\(DataService.globalData.currentUser)/rocks")
@@ -154,11 +144,14 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
         if let image = info[.editedImage] as? UIImage
             //if let image = info[] as? UIImage
         {
             imgView.image = image
-        
+          removeButton.isHidden = false
+            
        // if let imgDaa = UIImageJPEGRepresentation(image, 0.2){
             if let imgData = image.jpegData(compressionQuality: 0.2){
             let metadata = StorageMetadata()
@@ -166,6 +159,7 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
                if DataService.globalData.uploadImg(key: rock.key, imgData: imgData, metadata: metadata)
                {
                 rock.imageURL = image
+              
                 }
                 // let metadata = metadata
         }

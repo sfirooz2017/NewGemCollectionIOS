@@ -30,20 +30,10 @@ class LoginVC: UIViewController {
         }
         
     }
-    override func viewDidAppear(_ animated: Bool) {
-    
-
-
-    }
 
     
     @IBAction func forgotPasswordTapped(_ sender: Any) {
         performSegue(withIdentifier: "showForgotPassword", sender: nil)
-    }
-    
-    @IBAction func registerTapped(_ sender: Any) {
-        performSegue(withIdentifier: "showRegister", sender: nil)
-        
     }
     @IBAction func signInTapped(_ sender: Any) {
     

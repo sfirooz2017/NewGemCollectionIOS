@@ -18,18 +18,13 @@ class RegisterVC: UIViewController {
     
     @IBOutlet weak var confirmPasswordTB: customTextBox!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidAppear(_ animated: Bool) {
         title = "Register"
         
     }
 
         
-        func isValidEmail(testStr:String) -> Bool {
-            let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
-            let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
-            return emailTest.evaluate(with: testStr)
-        }
+      
         func isValidPassword(password:String)->Bool{
            return password.count > 6
         }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GemApp/Controllers/RockResultVC.swift"
+            timestampString = "622155081.1414779"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "RockResultVC"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GemApp.RockResultVC.imgView.getter : weak Swift.Optional&lt;__C.UIImageView&gt;"
+                  moduleName = "GemApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MacBook/Projects/GemApp/GemApp/Controllers/RockResultVC.swift"
+                  timestampString = "622133779.585255"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "86">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GemApp.RockResultVC.imgView.setter : weak Swift.Optional&lt;__C.UIImageView&gt;"
+                  moduleName = "GemApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MacBook/Projects/GemApp/GemApp/Controllers/RockResultVC.swift"
+                  timestampString = "622133779.589486"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "106">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GemApp.RockResultVC.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; GemApp.RockResultVC"
+                  moduleName = "GemApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MacBook/Projects/GemApp/GemApp/Controllers/RockResultVC.swift"
+                  timestampString = "622133779.594015"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "57">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GemApp.RockResultVC.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;GemApp.RockResultVC&gt;"
+                  moduleName = "GemApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/MacBook/Projects/GemApp/GemApp/Controllers/RockResultVC.swift"
+                  timestampString = "622133779.598544"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "50">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

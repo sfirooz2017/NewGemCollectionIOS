@@ -41,9 +41,12 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         
       tableView.delegate = self
       tableView.dataSource = self
+        tableView.allowsSelection = true
       searchBar.delegate = self
       tableView.reloadData()
-     
+       let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
+        textFieldInsideUISearchBar?.textColor = UIColor.white
+        textFieldInsideUISearchBar?.attributedPlaceholder = NSAttributedString(string: searchBar.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
 
         
                     
@@ -65,6 +68,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
  */
         
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "GemTableViewCell", for: indexPath) as? GemTableViewCell{
             
@@ -72,7 +76,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             let tempRock = tempArray[indexPath.row]
             
             cell.updateUi(rock: tempRock)
-            
+            cell.selectionStyle = .none
             return cell
             
         }

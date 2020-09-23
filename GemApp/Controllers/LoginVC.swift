@@ -41,19 +41,23 @@ class LoginVC: UIViewController {
     if let email = emailField.text, let password = passwordField.text
     {
         if email.isEmpty || password.isEmpty {
-            print("must fill all fields")
+           
+            sendAlert(title: "Error", message: "Must fill all fields")
+          //  print("must fill all fields")
             return
         }
        if DataService.globalData.logIn(email: email, password: password)
        {
         DataService.globalData.currentUser = email.lowercased().replacingOccurrences(of: ".", with: "_")
         DataService.globalData.writeData(data: email.lowercased().replacingOccurrences(of: ".", with: "_"), path: "users")
-        self.performSegue(withIdentifier: "RockResultUser", sender: nil)
+        performSegue(withIdentifier: "showHome", sender: nil)
+        //self.performSegue(withIdentifier: "RockResultUser", sender: nil)
         }
         else
        {
+        sendAlert(title: "Error", message: "Wrong email/password")
+
         
- 
         }
  
         }
@@ -81,7 +85,23 @@ class LoginVC: UIViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
     }
+    func sendAlert(title: String, message: String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        self.present(alert, animated: true){
+            alert.view.superview?.isUserInteractionEnabled = true
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped) )
+            alert.view.superview?.subviews[0].addGestureRecognizer(gesture)
+        }
+        
+    }
     
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
+    }
    
     
 }

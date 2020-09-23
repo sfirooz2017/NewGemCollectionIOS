@@ -24,16 +24,33 @@ class ForgotPasswordVC: UIViewController {
       
         if (emailTextBox.text?.isEmpty)!
         {
-            print("must enter an email")
+            sendAlert(title: "Error", message: "must enter an email")
             return
         }
         if !(isValidEmail(testStr: emailTextBox.text!))
         {
             
-        print("please enter a valid email")
+         sendAlert(title: "Error", message: "please enter a valid email")
            return
     }
          DataService.globalData.resetPassword(email: emailTextBox.text!)
+    }
+    func sendAlert(title: String, message: String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        self.present(alert, animated: true){
+            alert.view.superview?.isUserInteractionEnabled = true
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped) )
+            alert.view.superview?.subviews[0].addGestureRecognizer(gesture)
+        }
+        
+    }
+    
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

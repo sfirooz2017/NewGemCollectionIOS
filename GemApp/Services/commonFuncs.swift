@@ -7,12 +7,32 @@
 //
 
 import Foundation
+/*
 
+func sendAlert(title: String, message: String, VC: UIViewController)
+{
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    
+    VC.present(alert, animated: true){
+        alert.view.superview?.isUserInteractionEnabled = true
+        
+        let gesture = UITapGestureRecognizer(target: VC, action: #selector(VC.alertControllerBackgroundTapped()) )
+        alert.view.superview?.subviews[0].addGestureRecognizer(gesture)
+    }
+    
+}
+
+@objc func alertControllerBackgroundTapped()
+{
+    self.dismiss(animated: true, completion: nil)
+}
+*/
 func isValidEmail(testStr:String) -> Bool {
     let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
     let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
     return emailTest.evaluate(with: testStr)
 }
+
 func hexStringToUIColor (hex:String) -> UIColor {
     var cString:String = hex.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
     

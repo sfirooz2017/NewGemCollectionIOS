@@ -34,36 +34,56 @@ class RegisterVC: UIViewController {
         {
             if email.isEmpty || password.isEmpty || confirmPassword.isEmpty
         {
-            print("please fill all fields")
+            sendAlert(title: "Error", message: "Please fill all fields")
             return
         }
         if !(isValidEmail(testStr: email))
         {
-            print("please enter a valid email")
+            sendAlert(title: "Error", message: "Please enter a valid email")
+
             return
         }
         if !(isValidPassword(password: password)){
-            print("password must be over 6 characters long")
+            sendAlert(title: "Error", message: "Password must be over 6 characters long")
+
             return
         }
         if (password != confirmPassword)
         {
-            print("passwords do not match")
+                sendAlert(title: "Error", message: "Passwords do not match")
             return
         }
         if (DataService.globalData.createUser(email: email, password: password))
         {
-            print("account successfully created!")
             DataService.globalData.createFirebaseUser(uid: email.replacingOccurrences(of: ".", with: "_").lowercased())
             DataService.globalData.currentUser = email.replacingOccurrences(of: ".", with: "_").lowercased()
+            performSegue(withIdentifier: "showHome", sender: nil)
+
 
         }
         else
         {
-            print("could not create account. Try again.")
+            sendAlert(title: "Error", message: "Could not create account. Try again.")
         }
         }
       
+    }
+    func sendAlert(title: String, message: String)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        self.present(alert, animated: true){
+            alert.view.superview?.isUserInteractionEnabled = true
+            
+            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped) )
+            alert.view.superview?.subviews[0].addGestureRecognizer(gesture)
+        }
+        
+    }
+    
+    @objc func alertControllerBackgroundTapped()
+    {
+        self.dismiss(animated: true, completion: nil)
     }
 
 

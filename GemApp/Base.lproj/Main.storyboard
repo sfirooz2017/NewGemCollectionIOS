@@ -445,6 +445,7 @@
                         <outlet property="emailField" destination="5ve-8E-Ngs" id="EgE-Zo-X4R"/>
                         <outlet property="passwordField" destination="PSI-dZ-o8f" id="oHu-E5-2xN"/>
                         <segue destination="Zce-Zp-AMq" kind="show" identifier="showForgotPassword" id="4p3-Sf-bOq"/>
+                        <segue destination="HfQ-qA-Ddb" kind="show" identifier="showHome" id="auB-Hh-cFo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3dG-8f-Y8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -735,6 +736,7 @@
                         <outlet property="confirmPasswordTB" destination="bse-Dn-KIW" id="cGl-kI-GdM"/>
                         <outlet property="emailTB" destination="x7Y-Wp-FH4" id="J3q-cT-o6N"/>
                         <outlet property="passwordTB" destination="qKL-nQ-J13" id="6N6-0a-6tq"/>
+                        <segue destination="HfQ-qA-Ddb" kind="show" identifier="showHome" id="cDu-xX-1kn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CW8-Il-B2h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -965,6 +967,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1qv-gD-TBA"/>
+        <segue reference="cDu-xX-1kn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

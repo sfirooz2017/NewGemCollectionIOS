@@ -26,7 +26,10 @@ class LoginVC: UIViewController {
          title = "Log In"
         
         if Auth.auth().currentUser != nil{
-       
+       DataService.globalData.logOut()
+            print("logged out")
+           
+            
         }
         
     }
@@ -83,6 +86,8 @@ class LoginVC: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+        
         
     }
     func sendAlert(title: String, message: String)

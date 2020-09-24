@@ -47,7 +47,7 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         //collectionCheck()
         titleLbl.text = rock.name.capitalized
         title = rock.name.capitalized
-        
+        if DataService.globalData.currentUser != "nil"{
         if rock.collected != nil && rock.collected!
             
         {
@@ -59,6 +59,11 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
                 imgView.image = rock.imageURL
                 removeButton.isHidden = false
             }
+            else
+            {
+                imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
+
+            }
             
             
         }
@@ -69,7 +74,12 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
             imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
         }
         
-      
+        }
+        else
+        {
+            imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
+            addButton.isHidden = true
+        }
         
 
         colorView.backgroundColor = hexStringToUIColor(hex: rock.color)
@@ -130,6 +140,7 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     {
         imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
         rock.imageURL = nil
+        removeButton.isHidden = true
         DataService.globalData.deleteIMG(key: rock.key)
         DataService.globalData.writeData(data: rock.key, path: "users/\(DataService.globalData.currentUser)/rocks")
     }

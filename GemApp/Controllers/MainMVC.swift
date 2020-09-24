@@ -14,7 +14,8 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    var tempArray: [Rock] = DataService.globalData.rockList
+    var tempArray = [Rock]()
+      public var collection = false
     
     
      // var rocks = [Rock]()
@@ -22,7 +23,15 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
 
     
     override func viewDidLoad() {
-        super.viewDidLoad()
+          super.viewDidLoad()
+        if collection
+        {
+             print("shan: collect correct")
+            title = "Collection"
+       
+        }
+          reloadList()
+      
         sideMenus()
         customizeNavBar()
      
@@ -57,7 +66,9 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-      
+      reloadList()
+    tableView.reloadData()
+            print("Shan: reloadlist")
         /*
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
@@ -73,6 +84,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         if let cell = tableView.dequeueReusableCell(withIdentifier: "GemTableViewCell", for: indexPath) as? GemTableViewCell{
             
           //  let tempRock = rocks[indexPath.row]
+           
             let tempRock = tempArray[indexPath.row]
             
             cell.updateUi(rock: tempRock)
@@ -113,6 +125,10 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             //return rock.month?.lowercased().contains(text)
             if rock.name.contains(text) || (rock.month != nil  && (rock.month?.lowercased().contains(text))!) || rock.description.contains(text)
             {
+                if collection
+                {
+                return rock.collected != nil && rock.collected!
+                }
                 return true
             }
             return false
@@ -139,6 +155,27 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         }
         else{print("shan: tis nil")}
  
+    }
+    func reloadList()
+    {
+        tempArray.removeAll()
+    
+        if collection
+        {
+     
+        for x in 0...DataService.globalData.rockList.count - 1
+        {
+            if DataService.globalData.rockList[x].collected != nil && DataService.globalData.rockList[x].collected!
+            {
+                tempArray.append(DataService.globalData.rockList[x])
+            }
+        }
+        }
+        else
+        {
+            tempArray = DataService.globalData.rockList
+
+        }
     }
     
     func customizeNavBar(){

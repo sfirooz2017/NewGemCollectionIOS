@@ -21,7 +21,7 @@ class DataService{
     private var _REF_USERS = DB_BASE.child("users")
     private var _REF_IMAGES = STORAGE_BASE.child("images")
     private var _rockList: [Rock] = []
-    private var _currentUser: String!
+    private var _currentUser: String?
     
     var REF_BASE: DatabaseReference{
         return _REF_BASE
@@ -43,7 +43,7 @@ class DataService{
     }
     var currentUser: String{
         get
-        { return _currentUser}
+        { return _currentUser ?? "nil"}
         set
         {_currentUser = newValue}
     }
@@ -52,15 +52,19 @@ class DataService{
     }
     func logIn(email: String, password: String)-> Bool
     {
-        var validated = false;
+        var validated = false
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil{
                 //sign in successful
                 print("shan: user in")
+                
+                 validated = true
+               //  print ("shan \(validated)")
                 //  DataService.globalData.createFirebaseUser(uid: email.lowercased().replacingOccurrences(of: ".", with: "_"))
                 //add option with settig parent
              //  return true
-                validated = true
+                
+               
             }
             else{
              print("shan: error")
@@ -75,7 +79,20 @@ class DataService{
                  */
             }
         }
+        print ("shan \(validated)")
             return validated
+    }
+    func logOut()
+    {
+        do
+        {
+            try Auth.auth().signOut()
+            currentUser.removeAll()
+        }
+        catch let error as NSError
+        {
+            print (error.localizedDescription)
+        }
     }
     func createUser(email: String, password: String)->Bool{
         var validated = false

@@ -138,11 +138,16 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     
     func removeIMG()
     {
+        
         imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
+          print("shan: replaced")
         rock.imageURL = nil
         removeButton.isHidden = true
-        DataService.globalData.deleteIMG(key: rock.key)
-        DataService.globalData.writeData(data: rock.key, path: "users/\(DataService.globalData.currentUser)/rocks")
+        DispatchQueue.global().async {
+          
+            DataService.globalData.deleteIMG(key: self.rock.key)
+            DataService.globalData.writeData(data: self.rock.key, path: "users/\(DataService.globalData.currentUser)/rocks")
+        }
     }
     
     @IBAction func uploadPressed(_ sender: Any) {

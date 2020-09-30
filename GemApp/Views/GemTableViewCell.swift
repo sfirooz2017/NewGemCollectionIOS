@@ -10,7 +10,8 @@ import UIKit
 
 class GemTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var titlePreview: UITextView!
+  
+    @IBOutlet weak var titlePreview: UILabel!
     @IBOutlet weak var imgPreview: UIImageView!
     @IBOutlet weak var colorPreview: UIView!
     
@@ -33,7 +34,7 @@ class GemTableViewCell: UITableViewCell {
         
         //layer.backgroundColor = (UIColor.blue as! CGColor)
         //self.layer.backgroundColor = (hexStringToUIColor(hex: "ECEAEA") as! CGColor)
-        titlePreview.text = rock.name
+       titlePreview.text = rock.name
     
         colorPreview.backgroundColor = hexStringToUIColor(hex: rock.color)
         colorPreview.layer.cornerRadius = 15

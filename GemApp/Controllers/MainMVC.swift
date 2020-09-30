@@ -21,16 +21,21 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
      // var rocks = [Rock]()
 
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
+        reloadList()
+         tableView.reloadData()
+    }
     override func viewDidLoad() {
           super.viewDidLoad()
         if collection
         {
-             print("shan: collect correct")
+          //   print("shan: collect correct")
             title = "Collection"
        
         }
-          reloadList()
+       // reloadList()
       
         sideMenus()
         customizeNavBar()
@@ -52,7 +57,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
       tableView.dataSource = self
         tableView.allowsSelection = true
       searchBar.delegate = self
-      tableView.reloadData()
+    //  tableView.reloadData()
        let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideUISearchBar?.textColor = UIColor.white
         textFieldInsideUISearchBar?.attributedPlaceholder = NSAttributedString(string: searchBar.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -66,9 +71,9 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-      reloadList()
-    tableView.reloadData()
-            print("Shan: reloadlist")
+     // reloadList()
+   // tableView.reloadData()
+        
         /*
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
@@ -158,8 +163,9 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
     func reloadList()
     {
-        tempArray.removeAll()
+       tempArray.removeAll()
     
+        print("shan: called")
         if collection
         {
      

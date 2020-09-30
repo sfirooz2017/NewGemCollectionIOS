@@ -53,11 +53,11 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GemTableViewCell" rowHeight="140" id="c7O-hM-Y7V" customClass="GemTableViewCell" customModule="GemApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c7O-hM-Y7V" id="7cf-kb-gug">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="c7O-hM-Y7V" id="7cf-kb-gug">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NgN-UJ-ENF">
+                                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NgN-UJ-ENF">
                                                     <rect key="frame" x="5" y="6" width="365" height="128"/>
                                                     <color key="backgroundColor" red="0.92549019607843142" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
@@ -71,11 +71,12 @@
                                                                 <constraint firstAttribute="width" constant="20" id="zVM-1o-Lvj"/>
                                                             </constraints>
                                                         </view>
-                                                        <textView clipsSubviews="YES" contentMode="scaleToFill" delaysContentTouches="NO" canCancelContentTouches="NO" editable="NO" text="Garnet" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IrA-WF-BnB">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hGa-cf-Ref">
                                                             <rect key="frame" x="40" y="0.0" width="177" height="128"/>
-                                                            <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                        </textView>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IEF-03-ipg">
                                                             <rect key="frame" x="237" y="0.0" width="128" height="128"/>
                                                             <color key="backgroundColor" red="0.65098039220000004" green="0.1019607843" blue="0.015686274510000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -86,8 +87,6 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstItem="IrA-WF-BnB" firstAttribute="top" secondItem="cAG-uD-I8P" secondAttribute="top" id="5HF-yB-fjG"/>
-                                                        <constraint firstAttribute="bottom" secondItem="IrA-WF-BnB" secondAttribute="bottom" id="QlC-y1-pcy"/>
                                                         <constraint firstAttribute="trailing" secondItem="IEF-03-ipg" secondAttribute="trailing" id="tdu-JR-32c"/>
                                                     </constraints>
                                                 </stackView>
@@ -119,7 +118,7 @@
                                         <connections>
                                             <outlet property="colorPreview" destination="Q7Y-Jo-Ib0" id="3Fg-V1-UN8"/>
                                             <outlet property="imgPreview" destination="IEF-03-ipg" id="2B3-tA-SeV"/>
-                                            <outlet property="titlePreview" destination="IrA-WF-BnB" id="be0-pm-HPq"/>
+                                            <outlet property="titlePreview" destination="hGa-cf-Ref" id="o08-Hn-qzz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -223,7 +222,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Bf-yG-EKm">
-                                        <rect key="frame" x="15" y="286.5" width="49.5" height="20.5"/>
+                                        <rect key="frame" x="15" y="286.5" width="260" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -243,6 +242,7 @@
                                     <constraint firstItem="FOK-5i-iZm" firstAttribute="leading" secondItem="nMz-QR-hNW" secondAttribute="leading" constant="15" id="Dcd-7V-BVr"/>
                                     <constraint firstItem="9Vt-sR-lav" firstAttribute="leading" secondItem="nMz-QR-hNW" secondAttribute="leading" constant="15" id="Q3H-kx-1dn"/>
                                     <constraint firstItem="Cvh-sT-JS0" firstAttribute="leading" secondItem="nMz-QR-hNW" secondAttribute="leading" constant="30" id="Smi-u3-IqC"/>
+                                    <constraint firstAttribute="trailing" secondItem="6Bf-yG-EKm" secondAttribute="trailing" id="dNR-SP-Tph"/>
                                     <constraint firstItem="URy-DB-vwp" firstAttribute="top" secondItem="Cvh-sT-JS0" secondAttribute="top" constant="-10" id="ggG-Fq-xgc"/>
                                     <constraint firstItem="URy-DB-vwp" firstAttribute="trailing" secondItem="Cvh-sT-JS0" secondAttribute="trailing" constant="10" id="j8t-wL-hGD"/>
                                     <constraint firstItem="FOK-5i-iZm" firstAttribute="top" secondItem="6Bf-yG-EKm" secondAttribute="bottom" constant="35" id="kiq-NK-GfJ">
@@ -743,21 +743,6 @@
             </objects>
             <point key="canvasLocation" x="2281" y="1401"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="gyZ-ii-tWH">
-            <objects>
-                <viewController id="1FE-1l-BYr" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JiY-Zz-ndN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="RPe-3s-o0x"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fXs-j4-YOP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="4802.3999999999996" y="1138.3808095952024"/>
-        </scene>
         <!--Splash ScreenVC-->
         <scene sceneID="mFe-ZD-GZN">
             <objects>
@@ -884,8 +869,8 @@
                                                         <constraint firstAttribute="width" constant="38" id="EAN-wE-twR"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q4-Ge-O3Q">
-                                                    <rect key="frame" x="68" y="9" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0q4-Ge-O3Q">
+                                                    <rect key="frame" x="68" y="0.0" width="307" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -897,6 +882,7 @@
                                                 <constraint firstItem="0q4-Ge-O3Q" firstAttribute="leading" secondItem="Hnr-w1-7e1" secondAttribute="trailing" constant="15" id="Ayd-qD-vgu"/>
                                                 <constraint firstAttribute="bottom" secondItem="Hnr-w1-7e1" secondAttribute="bottom" constant="5" id="WvJ-A1-biw"/>
                                                 <constraint firstAttribute="bottom" secondItem="0q4-Ge-O3Q" secondAttribute="bottom" id="bQA-gO-scG"/>
+                                                <constraint firstAttribute="trailing" secondItem="0q4-Ge-O3Q" secondAttribute="trailing" id="rrA-Ai-xlj"/>
                                                 <constraint firstItem="0q4-Ge-O3Q" firstAttribute="top" secondItem="JZn-o2-RJf" secondAttribute="top" id="yhh-sS-F2r"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -972,9 +958,8 @@
         <image name="upload" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1mq-qb-Ouh"/>
         <segue reference="k4s-8h-dm0"/>
-        <segue reference="cDu-xX-1kn"/>
+        <segue reference="4CQ-lS-coi"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

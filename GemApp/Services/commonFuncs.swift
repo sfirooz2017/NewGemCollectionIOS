@@ -27,6 +27,8 @@ func sendAlert(title: String, message: String, VC: UIViewController)
     self.dismiss(animated: true, completion: nil)
 }
 */
+
+
 func isValidEmail(testStr:String) -> Bool {
     let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
     let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)

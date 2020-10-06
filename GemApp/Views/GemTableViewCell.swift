@@ -34,7 +34,7 @@ class GemTableViewCell: UITableViewCell {
         
         //layer.backgroundColor = (UIColor.blue as! CGColor)
         //self.layer.backgroundColor = (hexStringToUIColor(hex: "ECEAEA") as! CGColor)
-       titlePreview.text = rock.name
+       titlePreview.text = rock.name.capitalized
     
         colorPreview.backgroundColor = hexStringToUIColor(hex: rock.color)
         colorPreview.layer.cornerRadius = 15

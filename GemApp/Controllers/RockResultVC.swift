@@ -132,10 +132,10 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     */
 
     
-    @IBAction func removeImage(_ sender: Any) {
-        removeIMG()
+    @IBAction func removeTapped(_ sender: Any) {
+         removeIMG()
     }
-    
+
     func removeIMG()
     {
         
@@ -147,6 +147,7 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
           
             DataService.globalData.deleteIMG(key: self.rock.key)
             DataService.globalData.writeData(data: self.rock.key, path: "users/\(DataService.globalData.currentUser)/rocks")
+    
         }
     }
     

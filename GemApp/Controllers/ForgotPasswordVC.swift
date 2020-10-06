@@ -24,13 +24,13 @@ class ForgotPasswordVC: UIViewController {
       
         if (emailTextBox.text?.isEmpty)!
         {
-            sendAlert(title: "Error", message: "must enter an email")
+            sendAlert(title: "Error", message: "Must enter an email")
             return
         }
         if !(isValidEmail(testStr: emailTextBox.text!))
         {
             
-         sendAlert(title: "Error", message: "please enter a valid email")
+         sendAlert(title: "Error", message: "Please enter a valid email")
            return
     }
          DataService.globalData.resetPassword(email: emailTextBox.text!)

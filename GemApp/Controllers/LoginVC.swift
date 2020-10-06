@@ -26,8 +26,12 @@ class LoginVC: UIViewController {
          title = "Log In"
         
         if Auth.auth().currentUser != nil{
+           
        DataService.globalData.logOut()
+            DataService.globalData.currentUser = "nil"
             print("logged out")
+            NotificationCenter.default.post(name: Notification.Name("UserLoggedIn"), object:nil)
+
            
             
         }
@@ -49,22 +53,37 @@ class LoginVC: UIViewController {
           //  print("must fill all fields")
             return
         }
+        DataService.globalData.logIn(email: email, password: password) { (validated) in
+            if validated
+            {
+           // DataService.globalData.currentUser = email.lowercased().replacingOccurrences(of: ".", with: "_")
+           // DataService.globalData.writeData(data: email.lowercased().replacingOccurrences(of: ".", with: "_"), path: "users")
+            self.performSegue(withIdentifier: "showSplash", sender: nil)
+                  NotificationCenter.default.post(name: Notification.Name("UserLoggedIn"), object:nil)
+            }
+            //self.performSegue(withIdentifier: "RockResultUser", sender: nil)
+        
+        
+      /*
        if DataService.globalData.logIn(email: email, password: password)
        {
         DataService.globalData.currentUser = email.lowercased().replacingOccurrences(of: ".", with: "_")
         DataService.globalData.writeData(data: email.lowercased().replacingOccurrences(of: ".", with: "_"), path: "users")
+      
         performSegue(withIdentifier: "showHome", sender: nil)
         //self.performSegue(withIdentifier: "RockResultUser", sender: nil)
         }
+ */
         else
        {
-        sendAlert(title: "Error", message: "Wrong email/password")
+        self.sendAlert(title: "Error", message: "Wrong email/password")
 
         
         }
  
         }
   
+    }
     }
 
     func sideMenus(){

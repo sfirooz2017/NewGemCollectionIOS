@@ -50,15 +50,15 @@ class DataService{
     func createFirebaseUser(uid: String){
         REF_USERS.child(uid).setValue(uid)
     }
-    func logIn(email: String, password: String)-> Bool
+    func logIn(email: String, password: String, completion: @escaping (Bool) -> Void)
     {
-        var validated = false
+        //var validated = false
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error == nil{
                 //sign in successful
                 print("shan: user in")
-                
-                 validated = true
+                completion(true)
+               //  validated = true
                //  print ("shan \(validated)")
                 //  DataService.globalData.createFirebaseUser(uid: email.lowercased().replacingOccurrences(of: ".", with: "_"))
                 //add option with settig parent
@@ -68,6 +68,7 @@ class DataService{
             }
             else{
              print("shan: error")
+                completion(false)
                 /*
                  Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
                  if(error != nil)
@@ -79,8 +80,7 @@ class DataService{
                  */
             }
         }
-        print ("shan \(validated)")
-            return validated
+         //   return validated
     }
     func logOut()
     {

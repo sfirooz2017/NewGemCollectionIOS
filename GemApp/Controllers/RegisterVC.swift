@@ -57,6 +57,7 @@ class RegisterVC: UIViewController {
         {
             DataService.globalData.createFirebaseUser(uid: email.replacingOccurrences(of: ".", with: "_").lowercased())
             DataService.globalData.currentUser = email.replacingOccurrences(of: ".", with: "_").lowercased()
+            //writedata??
             performSegue(withIdentifier: "showHome", sender: nil)
 
 

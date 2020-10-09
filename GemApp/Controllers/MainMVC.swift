@@ -123,6 +123,8 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
 
             
             view.addGestureRecognizer((self.revealViewController()!.panGestureRecognizer()))
+            view.addGestureRecognizer((self.revealViewController()!.tapGestureRecognizer()))
+
             
         }
         else{print("shan: tis nil")}

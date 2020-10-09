@@ -33,7 +33,7 @@ class LoginVC: UIViewController {
             {
                 rock.imageURL = nil
             }
-            print("logged out")
+         
             NotificationCenter.default.post(name: Notification.Name("UserLoggedIn"), object:nil)
 
            

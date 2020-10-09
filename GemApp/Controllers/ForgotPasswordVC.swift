@@ -15,9 +15,12 @@ class ForgotPasswordVC: UIViewController {
     
     @IBOutlet weak var submitButton: UIButton!
     
-   //
-    override func viewDidAppear(_ animated: Bool) {
+   
+    override func viewDidLoad() {
+        super.viewDidLoad()
         title = "Forgot Password"
+        self.hideKeyboardWhenTappedAround()
+
         
     }
     @IBAction func submitTapped(_ sender: Any) {
@@ -35,6 +38,8 @@ class ForgotPasswordVC: UIViewController {
     }
          DataService.globalData.resetPassword(email: emailTextBox.text!)
     }
+    
+    /*
     func sendAlert(title: String, message: String)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -52,5 +57,6 @@ class ForgotPasswordVC: UIViewController {
     {
         self.dismiss(animated: true, completion: nil)
     }
+ */
     
 }

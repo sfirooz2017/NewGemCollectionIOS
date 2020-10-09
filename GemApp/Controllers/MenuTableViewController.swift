@@ -106,6 +106,7 @@ class MenuTableViewController: UITableViewController {
             loginLabel.text = "Login"
         }
     }
+    /*
     func sendAlert(title: String, message: String)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -123,4 +124,5 @@ class MenuTableViewController: UITableViewController {
     {
         self.dismiss(animated: true, completion: nil)
     }
+ */
 }

@@ -18,8 +18,11 @@ class RegisterVC: UIViewController {
     
     @IBOutlet weak var confirmPasswordTB: customTextBox!
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
         title = "Register"
+        self.hideKeyboardWhenTappedAround()
+
         
     }
 
@@ -69,6 +72,7 @@ class RegisterVC: UIViewController {
         }
       
     }
+    /*
     func sendAlert(title: String, message: String)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -86,6 +90,6 @@ class RegisterVC: UIViewController {
     {
         self.dismiss(animated: true, completion: nil)
     }
-
+*/
 
 }

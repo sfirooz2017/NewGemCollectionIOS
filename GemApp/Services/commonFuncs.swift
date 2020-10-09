@@ -27,8 +27,36 @@ func sendAlert(title: String, message: String, VC: UIViewController)
     self.dismiss(animated: true, completion: nil)
 }
 */
+extension UIViewController{
+    func hideKeyboardWhenTappedAround(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard()
+    {
+        view.endEditing(true)
+    }
+}
+extension UIViewController{
+func sendAlert(title: String, message: String)
+{
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    
+    self.present(alert, animated: true){
+        alert.view.superview?.isUserInteractionEnabled = true
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped) )
+        alert.view.superview?.subviews[0].addGestureRecognizer(gesture)
+    }
+    
+}
 
-
+@objc func alertControllerBackgroundTapped()
+{
+    self.dismiss(animated: true, completion: nil)
+}
+}
 func isValidEmail(testStr:String) -> Bool {
     let emailRegEx = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{1,4}$"
     let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)

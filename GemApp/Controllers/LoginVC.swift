@@ -22,6 +22,8 @@ class LoginVC: UIViewController {
     
         sideMenus()
         customizeNavBar()
+        self.hideKeyboardWhenTappedAround()
+        
         
          title = "Log In"
         
@@ -99,7 +101,8 @@ class LoginVC: UIViewController {
             revealViewController().rearViewRevealWidth = 275
     
             view.addGestureRecognizer((self.revealViewController()!.panGestureRecognizer()))
-            
+            view.addGestureRecognizer((self.revealViewController()!.tapGestureRecognizer()))
+
         }
         else{print("shan: tis nil")}
         
@@ -109,6 +112,7 @@ class LoginVC: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
         
     }
+    /*
     func sendAlert(title: String, message: String)
     {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -126,6 +130,6 @@ class LoginVC: UIViewController {
     {
         self.dismiss(animated: true, completion: nil)
     }
-   
+   */
     
 }

@@ -39,19 +39,6 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
       
         sideMenus()
         customizeNavBar()
-     
-        
-        /*
-        
-        let r1 = Rock(name: "rock1", description: "<#T##String#>", color: "<#T##String#>", key: "1")
-        let r2 = Rock(name: "rock2", description: "<#T##String#>", color: "<#T##String#>", key: "2")
-        let r3 = Rock(name: "rock3", description: "<#T##String#>", color: "<#T##String#>", key: "3")
-        rocks.append(r1)
-        rocks.append(r2)
-        rocks.append(r3)
-        rocks.append(r1)
-        */
-
         
       tableView.delegate = self
       tableView.dataSource = self
@@ -62,36 +49,16 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         textFieldInsideUISearchBar?.textColor = UIColor.white
         textFieldInsideUISearchBar?.attributedPlaceholder = NSAttributedString(string: searchBar.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
 
-        
-                    
-        
-       
-        
-        // Do any additional setup after loading the view, /Users/MacBook/Projects/gem app/gem app/Views/GemTableViewCell.swifttypically from a nib.
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-     // reloadList()
-   // tableView.reloadData()
-        
-        /*
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "SWRevealViewController") as! SWRevealViewController
-            self.view.window?.rootViewController = vc
-        if self.revealViewController() == nil{
-            print("shan: sorry")
-        }
- */
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "GemTableViewCell", for: indexPath) as? GemTableViewCell{
-            
-          //  let tempRock = rocks[indexPath.row]
-           
+                       
             let tempRock = tempArray[indexPath.row]
-            
             cell.updateUi(rock: tempRock)
             cell.selectionStyle = .none
             return cell
@@ -163,6 +130,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
     func reloadList()
     {
+        
        tempArray.removeAll()
     
         print("shan: called")
@@ -185,9 +153,10 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
     
     func customizeNavBar(){
-        navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+       navigationController?.navigationBar.tintColor = UIColor.white
+       // navigationController?.navigationBar.backgroundColor = UIColor.black
+       // navigationController?.navigationBar.barTintColor = UIColor.black
+        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
     }
 }

@@ -29,6 +29,10 @@ class LoginVC: UIViewController {
            
        DataService.globalData.logOut()
             DataService.globalData.currentUser = "nil"
+            for rock in DataService.globalData.rockList
+            {
+                rock.imageURL = nil
+            }
             print("logged out")
             NotificationCenter.default.post(name: Notification.Name("UserLoggedIn"), object:nil)
 
@@ -103,10 +107,6 @@ class LoginVC: UIViewController {
     
     func customizeNavBar(){
         navigationController?.navigationBar.tintColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        
-        
         
     }
     func sendAlert(title: String, message: String)

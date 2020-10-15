@@ -37,6 +37,7 @@ class ForgotPasswordVC: UIViewController {
            return
     }
          DataService.globalData.resetPassword(email: emailTextBox.text!)
+        sendAlert(title: "Success!", message: "Reset link will expire in one hour")
     }
     
     /*

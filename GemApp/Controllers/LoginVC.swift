@@ -56,7 +56,6 @@ class LoginVC: UIViewController {
         if email.isEmpty || password.isEmpty {
            
             sendAlert(title: "Error", message: "Must fill all fields")
-          //  print("must fill all fields")
             return
         }
         DataService.globalData.logIn(email: email, password: password) { (validated) in

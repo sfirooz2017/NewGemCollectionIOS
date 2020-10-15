@@ -29,6 +29,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
     override func viewDidLoad() {
           super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         if collection
         {
           //   print("shan: collect correct")
@@ -50,10 +51,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         textFieldInsideUISearchBar?.attributedPlaceholder = NSAttributedString(string: searchBar.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
 
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
-    }
+ 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "GemTableViewCell", for: indexPath) as? GemTableViewCell{
@@ -86,7 +84,19 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
 
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard !searchText.isEmpty else {tempArray = DataService.globalData.rockList
+        guard !searchText.isEmpty else {
+            if collection{
+                    tempArray = DataService.globalData.rockList.filter({ (rock) -> Bool in
+                        if rock.collected != nil
+                        {return rock.collected! ? true : false}
+                        return false
+                        })
+                
+            }
+            else
+            {
+            tempArray = DataService.globalData.rockList
+            }
             tableView.reloadData()
             return
             
@@ -127,7 +137,6 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
 
             
         }
-        else{print("shan: tis nil")}
  
     }
     func reloadList()

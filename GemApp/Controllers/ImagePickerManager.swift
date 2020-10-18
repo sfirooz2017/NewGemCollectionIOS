@@ -39,6 +39,7 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         
         // Add the actions
         picker.delegate = self
+        picker.allowsEditing = true
         alert.addAction(cameraAction)
         alert.addAction(galleryAction)
         alert.addAction(cancelAction)
@@ -58,7 +59,6 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     func openGallery(){
         alert.dismiss(animated: true, completion: nil)
         picker.sourceType = .photoLibrary
-        picker.allowsEditing = true
         self.viewController!.present(picker, animated: true, completion: nil)
     }
     

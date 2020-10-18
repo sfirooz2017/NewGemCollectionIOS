@@ -23,6 +23,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
        
         reloadList()
          tableView.reloadData()
+        searchBar.text = ""
     }
     override func viewDidLoad() {
           super.viewDidLoad()

@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8FCC5AB73629FCB22DD65AE /* Pods_GemApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F0A7FA15418C50C813A0714 /* Pods_GemApp.framework */; };
+		D1A762A78C9464D7144A3169 /* Pods_GemApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 440170F10C595A356A718D12 /* Pods_GemApp.framework */; };
 		FA4D9FD925126D8000543102 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4D9FD825126D8000543102 /* SWRevealViewController.m */; };
 		FA4D9FDD2513F99400543102 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D9FDC2513F99400543102 /* MenuTableViewController.swift */; };
 		FA9A3B6325150545006BB5E2 /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9A3B6225150544006BB5E2 /* UIImageViewAligned.m */; };
 		FAB06DCE253BD0CF00B3D955 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB06DCD253BD0CF00B3D955 /* ImagePickerManager.swift */; };
+		FAB06DD0253CA03000B3D955 /* MapsControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB06DCF253CA03000B3D955 /* MapsControllerViewController.swift */; };
 		FAFACC0225119EE100DB1BA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC0125119EE100DB1BA8 /* AppDelegate.swift */; };
 		FAFACC0725119EE100DB1BA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC0525119EE100DB1BA8 /* Main.storyboard */; };
 		FAFACC0925119EE200DB1BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC0825119EE200DB1BA8 /* Assets.xcassets */; };
@@ -31,9 +32,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		59E763E990F62DEA082F3F10 /* Pods-GemApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GemApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GemApp/Pods-GemApp.debug.xcconfig"; sourceTree = "<group>"; };
-		7F0A7FA15418C50C813A0714 /* Pods_GemApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GemApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E0481BD9362AB1B96F4C8EEA /* Pods-GemApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GemApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GemApp/Pods-GemApp.release.xcconfig"; sourceTree = "<group>"; };
+		440170F10C595A356A718D12 /* Pods_GemApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GemApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CE1997375F5A572E5699191 /* Pods-GemApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GemApp.debug.xcconfig"; path = "Target Support Files/Pods-GemApp/Pods-GemApp.debug.xcconfig"; sourceTree = "<group>"; };
+		85817F9F8BA3C69697175859 /* Pods-GemApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GemApp.release.xcconfig"; path = "Target Support Files/Pods-GemApp/Pods-GemApp.release.xcconfig"; sourceTree = "<group>"; };
 		FA4D9FD625126D7100543102 /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		FA4D9FD725126D7900543102 /* GemApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GemApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA4D9FD825126D8000543102 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -41,6 +42,7 @@
 		FA9A3B6125150530006BB5E2 /* UIImageViewAligned.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImageViewAligned.h; sourceTree = "<group>"; };
 		FA9A3B6225150544006BB5E2 /* UIImageViewAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAligned.m; sourceTree = "<group>"; };
 		FAB06DCD253BD0CF00B3D955 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
+		FAB06DCF253CA03000B3D955 /* MapsControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsControllerViewController.swift; sourceTree = "<group>"; };
 		FAFACBFE25119EE100DB1BA8 /* GemApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GemApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFACC0125119EE100DB1BA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAFACC0625119EE100DB1BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -66,28 +68,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8FCC5AB73629FCB22DD65AE /* Pods_GemApp.framework in Frameworks */,
+				D1A762A78C9464D7144A3169 /* Pods_GemApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2D8C116B81453520869B5850 /* Frameworks */ = {
+		596E1DD8CF072C0850DD2220 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7F0A7FA15418C50C813A0714 /* Pods_GemApp.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E68EEC61ABD698849985DC03 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				59E763E990F62DEA082F3F10 /* Pods-GemApp.debug.xcconfig */,
-				E0481BD9362AB1B96F4C8EEA /* Pods-GemApp.release.xcconfig */,
+				5CE1997375F5A572E5699191 /* Pods-GemApp.debug.xcconfig */,
+				85817F9F8BA3C69697175859 /* Pods-GemApp.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AB979F616ACC7468DFAB0B37 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				440170F10C595A356A718D12 /* Pods_GemApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FA647746251269610031000C /* SWRevealViewController */ = {
@@ -114,8 +117,8 @@
 			children = (
 				FAFACC0025119EE100DB1BA8 /* GemApp */,
 				FAFACBFF25119EE100DB1BA8 /* Products */,
-				E68EEC61ABD698849985DC03 /* Pods */,
-				2D8C116B81453520869B5850 /* Frameworks */,
+				596E1DD8CF072C0850DD2220 /* Pods */,
+				AB979F616ACC7468DFAB0B37 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +160,7 @@
 				FAFACC1A2511A03400DB1BA8 /* SplashScreenVC.swift */,
 				FA4D9FDC2513F99400543102 /* MenuTableViewController.swift */,
 				FAB06DCD253BD0CF00B3D955 /* ImagePickerManager.swift */,
+				FAB06DCF253CA03000B3D955 /* MapsControllerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -194,11 +198,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAFACC1025119EE200DB1BA8 /* Build configuration list for PBXNativeTarget "GemApp" */;
 			buildPhases = (
-				9D19A40113AE746080DABD9D /* [CP] Check Pods Manifest.lock */,
+				2E84CC3F80DB24F01DE662EE /* [CP] Check Pods Manifest.lock */,
 				FAFACBFA25119EE100DB1BA8 /* Sources */,
 				FAFACBFB25119EE100DB1BA8 /* Frameworks */,
 				FAFACBFC25119EE100DB1BA8 /* Resources */,
-				C5A834E8B19856D17D272BEA /* [CP] Embed Pods Frameworks */,
+				7F4AADEF7F9D8302D21A3E0F /* [CP] Embed Pods Frameworks */,
+				734F4A7EC1C0B64291605448 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -258,16 +263,20 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9D19A40113AE746080DABD9D /* [CP] Check Pods Manifest.lock */ = {
+		2E84CC3F80DB24F01DE662EE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-GemApp-checkManifestLockResult.txt",
 			);
@@ -276,7 +285,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C5A834E8B19856D17D272BEA /* [CP] Embed Pods Frameworks */ = {
+		734F4A7EC1C0B64291605448 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GemApp/Pods-GemApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GemApp/Pods-GemApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GemApp/Pods-GemApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F4AADEF7F9D8302D21A3E0F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -301,6 +327,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAFACC2B2511A03400DB1BA8 /* Rock.swift in Sources */,
+				FAB06DD0253CA03000B3D955 /* MapsControllerViewController.swift in Sources */,
 				FAFACC2C2511A03400DB1BA8 /* commonFuncs.swift in Sources */,
 				FA4D9FDD2513F99400543102 /* MenuTableViewController.swift in Sources */,
 				FAFACC262511A03400DB1BA8 /* MainMVC.swift in Sources */,
@@ -459,7 +486,7 @@
 		};
 		FAFACC1125119EE200DB1BA8 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 59E763E990F62DEA082F3F10 /* Pods-GemApp.debug.xcconfig */;
+			baseConfigurationReference = 5CE1997375F5A572E5699191 /* Pods-GemApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -484,7 +511,7 @@
 		};
 		FAFACC1225119EE200DB1BA8 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E0481BD9362AB1B96F4C8EEA /* Pods-GemApp.release.xcconfig */;
+			baseConfigurationReference = 85817F9F8BA3C69697175859 /* Pods-GemApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

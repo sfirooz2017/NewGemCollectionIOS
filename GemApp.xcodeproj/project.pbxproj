@@ -11,6 +11,7 @@
 		FA4D9FD925126D8000543102 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4D9FD825126D8000543102 /* SWRevealViewController.m */; };
 		FA4D9FDD2513F99400543102 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4D9FDC2513F99400543102 /* MenuTableViewController.swift */; };
 		FA9A3B6325150545006BB5E2 /* UIImageViewAligned.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9A3B6225150544006BB5E2 /* UIImageViewAligned.m */; };
+		FAB06DCE253BD0CF00B3D955 /* ImagePickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB06DCD253BD0CF00B3D955 /* ImagePickerManager.swift */; };
 		FAFACC0225119EE100DB1BA8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC0125119EE100DB1BA8 /* AppDelegate.swift */; };
 		FAFACC0725119EE100DB1BA8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC0525119EE100DB1BA8 /* Main.storyboard */; };
 		FAFACC0925119EE200DB1BA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC0825119EE200DB1BA8 /* Assets.xcassets */; };
@@ -25,7 +26,6 @@
 		FAFACC2C2511A03400DB1BA8 /* commonFuncs.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1E2511A03400DB1BA8 /* commonFuncs.swift */; };
 		FAFACC2D2511A03400DB1BA8 /* customTextBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC1F2511A03400DB1BA8 /* customTextBox.swift */; };
 		FAFACC2E2511A03400DB1BA8 /* GemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC202511A03400DB1BA8 /* GemTableViewCell.swift */; };
-		FAFACC2F2511A03400DB1BA8 /* RockResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC212511A03400DB1BA8 /* RockResult.swift */; };
 		FAFACC302511A03400DB1BA8 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFACC232511A03400DB1BA8 /* DataService.swift */; };
 		FAFACC322511B42F00DB1BA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFACC312511B42F00DB1BA8 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
@@ -40,6 +40,7 @@
 		FA4D9FDC2513F99400543102 /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		FA9A3B6125150530006BB5E2 /* UIImageViewAligned.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImageViewAligned.h; sourceTree = "<group>"; };
 		FA9A3B6225150544006BB5E2 /* UIImageViewAligned.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageViewAligned.m; sourceTree = "<group>"; };
+		FAB06DCD253BD0CF00B3D955 /* ImagePickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerManager.swift; sourceTree = "<group>"; };
 		FAFACBFE25119EE100DB1BA8 /* GemApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GemApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFACC0125119EE100DB1BA8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FAFACC0625119EE100DB1BA8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		FAFACC1E2511A03400DB1BA8 /* commonFuncs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = commonFuncs.swift; sourceTree = "<group>"; };
 		FAFACC1F2511A03400DB1BA8 /* customTextBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = customTextBox.swift; sourceTree = "<group>"; };
 		FAFACC202511A03400DB1BA8 /* GemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GemTableViewCell.swift; sourceTree = "<group>"; };
-		FAFACC212511A03400DB1BA8 /* RockResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RockResult.swift; sourceTree = "<group>"; };
 		FAFACC232511A03400DB1BA8 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		FAFACC312511B42F00DB1BA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +156,7 @@
 				FAFACC192511A03400DB1BA8 /* RockResultVC.swift */,
 				FAFACC1A2511A03400DB1BA8 /* SplashScreenVC.swift */,
 				FA4D9FDC2513F99400543102 /* MenuTableViewController.swift */,
+				FAB06DCD253BD0CF00B3D955 /* ImagePickerManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -173,7 +174,6 @@
 			children = (
 				FAFACC1F2511A03400DB1BA8 /* customTextBox.swift */,
 				FAFACC202511A03400DB1BA8 /* GemTableViewCell.swift */,
-				FAFACC212511A03400DB1BA8 /* RockResult.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -306,7 +306,6 @@
 				FAFACC262511A03400DB1BA8 /* MainMVC.swift in Sources */,
 				FAFACC2A2511A03400DB1BA8 /* SplashScreenVC.swift in Sources */,
 				FAFACC0225119EE100DB1BA8 /* AppDelegate.swift in Sources */,
-				FAFACC2F2511A03400DB1BA8 /* RockResult.swift in Sources */,
 				FAFACC2D2511A03400DB1BA8 /* customTextBox.swift in Sources */,
 				FA4D9FD925126D8000543102 /* SWRevealViewController.m in Sources */,
 				FAFACC302511A03400DB1BA8 /* DataService.swift in Sources */,
@@ -316,6 +315,7 @@
 				FAFACC252511A03400DB1BA8 /* LoginVC.swift in Sources */,
 				FAFACC242511A03400DB1BA8 /* ForgotPasswordVC.swift in Sources */,
 				FA9A3B6325150545006BB5E2 /* UIImageViewAligned.m in Sources */,
+				FAB06DCE253BD0CF00B3D955 /* ImagePickerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +467,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LRQUQPR6A5;
 				INFOPLIST_FILE = GemApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -492,7 +492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LRQUQPR6A5;
 				INFOPLIST_FILE = GemApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

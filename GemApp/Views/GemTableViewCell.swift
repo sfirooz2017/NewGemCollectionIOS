@@ -30,10 +30,7 @@ class GemTableViewCell: UITableViewCell {
     }
    
     func updateUi(rock: Rock){
-        
-        
-        //layer.backgroundColor = (UIColor.blue as! CGColor)
-        //self.layer.backgroundColor = (hexStringToUIColor(hex: "ECEAEA") as! CGColor)
+      
        titlePreview.text = rock.name.capitalized
     
         colorPreview.backgroundColor = hexStringToUIColor(hex: rock.color)
@@ -41,16 +38,7 @@ class GemTableViewCell: UITableViewCell {
         
         if(rock.imageURL != nil)
         {
-            /*
-         let url = URL(string: rock.imageURL!)
-            let data = try? Data(contentsOf: url!)
-            */
-           // if let imageData = rock.imageURL{
-             //   let image = UIImage(data: imageData)
                 imgPreview.image = rock.imageURL
-            //}
-            
-          //  imgPreview.image = url
         }
         else
         {

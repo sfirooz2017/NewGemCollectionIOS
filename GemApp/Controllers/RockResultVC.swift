@@ -40,11 +40,7 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         imagePicker = UIImagePickerController()
         imagePicker.allowsEditing = true
         imagePicker.delegate = self
-       
-        
-        //self.dismiss(animated: true, completion: nil)
-        
-        //collectionCheck()
+      
         titleLbl.text = rock.name.capitalized
         title = rock.name.capitalized
         if DataService.globalData.currentUser != "nil"{
@@ -121,16 +117,6 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         }
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     
     @IBAction func removeTapped(_ sender: Any) {
         removeIMG(stillCollected: true)
@@ -153,7 +139,20 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     }
     
     @IBAction func uploadPressed(_ sender: Any) {
-         present(imagePicker, animated: true, completion: nil)
+        ImagePickerManager().pickImage(self) { image in
+            self.imgView.image = image
+            self.removeButton.isHidden = false
+            if let imgData = image.jpegData(compressionQuality: 0.2){
+                let metadata = StorageMetadata()
+                metadata.contentType = "image.jpeg"
+                if DataService.globalData.uploadImg(key: self.rock.key, imgData: imgData, metadata: metadata)
+                {
+                    self.rock.imageURL = image
+                    
+                }
+            }
+        }
+        // present(imagePicker, animated: true, completion: nil)
         
     }
     @IBAction func addPressed(_ sender: Any) {
@@ -165,13 +164,10 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         
         
         if let image = info[.editedImage] as? UIImage
-            //if let image = info[] as? UIImage
         {
             imgView.image = image
           removeButton.isHidden = false
-            
-       // if let imgDaa = UIImageJPEGRepresentation(image, 0.2){
-            if let imgData = image.jpegData(compressionQuality: 0.2){
+                        if let imgData = image.jpegData(compressionQuality: 0.2){
             let metadata = StorageMetadata()
                 metadata.contentType = "image.jpeg"
                if DataService.globalData.uploadImg(key: rock.key, imgData: imgData, metadata: metadata)
@@ -179,13 +175,12 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
                 rock.imageURL = image
               
                 }
-                // let metadata = metadata
         }
             
         
         imagePicker.dismiss(animated: true, completion: nil)
     }
     }
-
+    
 }
 

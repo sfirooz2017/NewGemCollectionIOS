@@ -56,29 +56,17 @@ class LoginVC: UIViewController {
         if email.isEmpty || password.isEmpty {
            
             sendAlert(title: "Error", message: "Must fill all fields")
+            
             return
         }
         DataService.globalData.logIn(email: email, password: password) { (validated) in
             if validated
             {
-           // DataService.globalData.currentUser = email.lowercased().replacingOccurrences(of: ".", with: "_")
-           // DataService.globalData.writeData(data: email.lowercased().replacingOccurrences(of: ".", with: "_"), path: "users")
+    
             self.performSegue(withIdentifier: "showSplash", sender: nil)
                   NotificationCenter.default.post(name: Notification.Name("UserLoggedIn"), object:nil)
             }
-            //self.performSegue(withIdentifier: "RockResultUser", sender: nil)
-        
-        
-      /*
-       if DataService.globalData.logIn(email: email, password: password)
-       {
-        DataService.globalData.currentUser = email.lowercased().replacingOccurrences(of: ".", with: "_")
-        DataService.globalData.writeData(data: email.lowercased().replacingOccurrences(of: ".", with: "_"), path: "users")
-      
-        performSegue(withIdentifier: "showHome", sender: nil)
-        //self.performSegue(withIdentifier: "RockResultUser", sender: nil)
-        }
- */
+
         else
        {
         self.sendAlert(title: "Error", message: "Wrong email/password")
@@ -103,7 +91,6 @@ class LoginVC: UIViewController {
             view.addGestureRecognizer((self.revealViewController()!.tapGestureRecognizer()))
 
         }
-        else{print("shan: tis nil")}
         
     }
     
@@ -111,24 +98,6 @@ class LoginVC: UIViewController {
         navigationController?.navigationBar.tintColor = UIColor.white
         
     }
-    /*
-    func sendAlert(title: String, message: String)
-    {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        self.present(alert, animated: true){
-            alert.view.superview?.isUserInteractionEnabled = true
-            
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped) )
-            alert.view.superview?.subviews[0].addGestureRecognizer(gesture)
-        }
-        
-    }
-    
-    @objc func alertControllerBackgroundTapped()
-    {
-        self.dismiss(animated: true, completion: nil)
-    }
-   */
+
     
 }

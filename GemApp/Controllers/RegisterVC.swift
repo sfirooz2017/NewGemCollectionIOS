@@ -72,24 +72,5 @@ class RegisterVC: UIViewController {
         }
       
     }
-    /*
-    func sendAlert(title: String, message: String)
-    {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        self.present(alert, animated: true){
-            alert.view.superview?.isUserInteractionEnabled = true
-            
-            let gesture = UITapGestureRecognizer(target: self, action: #selector(self.alertControllerBackgroundTapped) )
-            alert.view.superview?.subviews[0].addGestureRecognizer(gesture)
-        }
-        
-    }
-    
-    @objc func alertControllerBackgroundTapped()
-    {
-        self.dismiss(animated: true, completion: nil)
-    }
-*/
 
 }

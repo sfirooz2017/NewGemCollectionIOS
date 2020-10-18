@@ -7,26 +7,7 @@
 //
 
 import Foundation
-/*
 
-func sendAlert(title: String, message: String, VC: UIViewController)
-{
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-    
-    VC.present(alert, animated: true){
-        alert.view.superview?.isUserInteractionEnabled = true
-        
-        let gesture = UITapGestureRecognizer(target: VC, action: #selector(VC.alertControllerBackgroundTapped()) )
-        alert.view.superview?.subviews[0].addGestureRecognizer(gesture)
-    }
-    
-}
-
-@objc func alertControllerBackgroundTapped()
-{
-    self.dismiss(animated: true, completion: nil)
-}
-*/
 extension UIViewController{
     func hideKeyboardWhenTappedAround(){
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))

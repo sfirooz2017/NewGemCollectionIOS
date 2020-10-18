@@ -17,9 +17,6 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     var tempArray = [Rock]()
       public var collection = false
     
-    
-     // var rocks = [Rock]()
-
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -32,12 +29,10 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         self.hideKeyboardWhenTappedAround()
         if collection
         {
-          //   print("shan: collect correct")
             title = "Collection"
        
         }
-       // reloadList()
-      
+
         sideMenus()
         customizeNavBar()
         
@@ -45,7 +40,6 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
       tableView.dataSource = self
         tableView.allowsSelection = true
       searchBar.delegate = self
-    //  tableView.reloadData()
        let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideUISearchBar?.textColor = UIColor.white
         textFieldInsideUISearchBar?.attributedPlaceholder = NSAttributedString(string: searchBar.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
@@ -66,12 +60,10 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         return UITableViewCell()
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-       // return rocks.count
         return tempArray.count
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let rock = tempArray[indexPath.row]
-        //let rock = rocks[indexPath.row]
         performSegue(withIdentifier: "RockResult", sender: rock)
     }
     
@@ -104,7 +96,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         
         tempArray = DataService.globalData.rockList.filter({ (rock) -> Bool in
             guard let text = searchBar.text?.lowercased() else {return false}
-            //return rock.month?.lowercased().contains(text)
+    
             if rock.name.contains(text) || (rock.month != nil  && (rock.month?.lowercased().contains(text))!) || rock.description.contains(text)
             {
                 if collection
@@ -114,12 +106,10 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                 return true
             }
             return false
-           // return rock.name.contains(text)
+      
         })
         tableView.reloadData()
-        
-        
-        //  tempArray = DataService.globalData.rockList.filter({$0.prefix(searchText.count) == searchText})
+   
     }
     
    
@@ -135,7 +125,6 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             view.addGestureRecognizer((self.revealViewController()!.panGestureRecognizer()))
             view.addGestureRecognizer((self.revealViewController()!.tapGestureRecognizer()))
 
-            
         }
  
     }
@@ -144,7 +133,6 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         
        tempArray.removeAll()
     
-        print("shan: called")
         if collection
         {
      
@@ -165,9 +153,6 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     
     func customizeNavBar(){
        navigationController?.navigationBar.tintColor = UIColor.white
-       // navigationController?.navigationBar.backgroundColor = UIColor.black
-       // navigationController?.navigationBar.barTintColor = UIColor.black
-        //navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
     }
 }

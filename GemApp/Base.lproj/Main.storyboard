@@ -743,16 +743,78 @@
             </objects>
             <point key="canvasLocation" x="2281" y="1401"/>
         </scene>
-        <!--Maps Controller View Controller-->
+        <!--MapVC-->
         <scene sceneID="hIf-SN-wrn">
             <objects>
-                <viewController id="wya-YL-TM7" customClass="MapsControllerViewController" customModule="GemApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="wya-YL-TM7" customClass="MapVC" customModule="GemApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="I1T-Vk-7sx">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RI0-Xc-1li">
+                                <rect key="frame" x="0.0" y="417" width="375" height="250"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="placecell" rowHeight="100" id="AR8-8n-xcG" customClass="mapTableViewCell" customModule="GemApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AR8-8n-xcG" id="7TK-ry-nBV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vPz-0z-78e">
+                                                    <rect key="frame" x="25" y="0.0" width="325" height="99.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOI-n4-vQx">
+                                                            <rect key="frame" x="0.0" y="0.0" width="325" height="74"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" tag="103" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m8w-d5-HLp">
+                                                            <rect key="frame" x="0.0" y="79" width="325" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="vPz-0z-78e" secondAttribute="bottom" id="3Kj-1s-Jbu"/>
+                                                <constraint firstItem="vPz-0z-78e" firstAttribute="top" secondItem="7TK-ry-nBV" secondAttribute="top" id="VWQ-QL-3Bi"/>
+                                                <constraint firstAttribute="trailing" secondItem="vPz-0z-78e" secondAttribute="trailing" constant="25" id="dBC-sj-XsG"/>
+                                                <constraint firstItem="vPz-0z-78e" firstAttribute="leading" secondItem="7TK-ry-nBV" secondAttribute="leading" constant="25" id="fdB-f2-J8x"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="addressLbl" destination="m8w-d5-HLp" id="4jF-ui-obb"/>
+                                            <outlet property="nameLbl" destination="TOI-n4-vQx" id="pDP-hH-Mch"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Uc-no-0lD">
+                                <rect key="frame" x="0.0" y="20" width="375" height="397"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jPV-Yt-Rol" firstAttribute="trailing" secondItem="2Uc-no-0lD" secondAttribute="trailing" id="8GE-4I-7UM"/>
+                            <constraint firstItem="2Uc-no-0lD" firstAttribute="leading" secondItem="jPV-Yt-Rol" secondAttribute="leading" id="Ady-MX-CEC"/>
+                            <constraint firstItem="RI0-Xc-1li" firstAttribute="top" secondItem="jPV-Yt-Rol" secondAttribute="top" constant="397" id="DdS-pA-K07"/>
+                            <constraint firstItem="RI0-Xc-1li" firstAttribute="top" secondItem="2Uc-no-0lD" secondAttribute="bottom" id="b0T-vl-8yw"/>
+                            <constraint firstItem="jPV-Yt-Rol" firstAttribute="trailing" secondItem="RI0-Xc-1li" secondAttribute="trailing" id="jTB-Q6-fON"/>
+                            <constraint firstItem="RI0-Xc-1li" firstAttribute="leading" secondItem="jPV-Yt-Rol" secondAttribute="leading" id="pyy-Uo-rFV"/>
+                            <constraint firstItem="2Uc-no-0lD" firstAttribute="top" secondItem="jPV-Yt-Rol" secondAttribute="top" id="qrY-9u-6dH"/>
+                            <constraint firstItem="jPV-Yt-Rol" firstAttribute="bottom" secondItem="RI0-Xc-1li" secondAttribute="bottom" id="rD0-Tj-Sm5"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="jPV-Yt-Rol"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="2Uc-no-0lD" id="HC3-BB-Jxc"/>
+                        <outlet property="tblPlaces" destination="RI0-Xc-1li" id="Aqz-FO-oYp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mEg-Jg-Nnx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -978,7 +1040,6 @@
         <image name="upload" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1mq-qb-Ouh"/>
         <segue reference="1qv-gD-TBA"/>
         <segue reference="cDu-xX-1kn"/>
     </inferredMetricsTieBreakers>

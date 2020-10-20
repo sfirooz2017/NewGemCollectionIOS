@@ -141,4 +141,43 @@ class DataService{
         
     }
     
+    func searchPlaceFromGoogle(longitude : String, latitude : String )
+    {
+        var strGoogleApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=rock+shop&type=store&location=40.7516341,-73.6991966&radius=1000&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
+        
+        //"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.7516341,-73.6991966&radius=15000&name=rock&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
+        //"https://www.maps.googleapis.com/maps/api/place/textsearch/json?query=dunkin&key=AIzaSyCeLTyRdml-US03Ct8I6TKuiMAZSHBsX34"
+        //rock+shop/@40.7516341,-73.6991966,9z/data=!3m1!4b1"
+        //"https://www.google.com/maps/search/rock+shop/@(longitude),(latitude),10z/data=!3m1!4b1"
+     
+        strGoogleApi = strGoogleApi.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        var urlRequest = URLRequest(url: URL(string : strGoogleApi)!)
+        urlRequest.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+            if error == nil{
+                
+                
+                let jsonDict = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                if let dict = jsonDict as? Dictionary<String, AnyObject>{
+                    
+                }
+                    /*
+                    if let results = dict["results"] as? [Dictionary<String, AnyObject>]
+                    {
+                        self.resultsArray.removeAll()
+                        for dct in results{
+                            self.resultsArray.append(dct)
+                        }
+                        self.tblPlaces.reloadData()
+                    }
+                }
+                print (jsonDict)
+            
+                 */
+            }
+        }
+        task.resume()
+    }
 }

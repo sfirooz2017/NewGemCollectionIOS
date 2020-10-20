@@ -24,7 +24,7 @@ class MenuTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if DataService.globalData.currentUser == "nil" &&  identifier == "collectionShow"

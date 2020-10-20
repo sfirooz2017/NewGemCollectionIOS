@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import CoreLocation
 
 class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -24,6 +25,15 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         mapView.delegate = self
         
         locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 50
+        locationManager.startUpdatingLocation()
+        mapView.showsUserLocation = true
+        
+        
+       // locationManager(locationManager, didChangeAuthorization: CLLocationManager.authorizationStatus())
+        
+        //locationManager.requestWhenInUseAuthorization()
         //configureLocationServices()
 
         
@@ -114,6 +124,7 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
  */
     private func beginLocationUpdates(locationManager: CLLocationManager)
     {
+        print("shan: REACHED")
         mapView.showsUserLocation = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()

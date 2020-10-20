@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wya-YL-TM7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sgf-Kv-xOv">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -27,7 +27,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyF-fW-4rA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="263" y="-1096"/>
+            <point key="canvasLocation" x="1200.8" y="-1096.1019490254873"/>
         </scene>
         <!--Home-->
         <scene sceneID="tne-QT-ifu">
@@ -148,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1517" y="-140"/>
+            <point key="canvasLocation" x="2455.1999999999998" y="-140.77961019490255"/>
         </scene>
         <!--Rock ResultVC-->
         <scene sceneID="JbE-aO-WIj">
@@ -307,7 +307,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mS4-7o-ueg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2844" y="-65"/>
+            <point key="canvasLocation" x="3783.1999999999998" y="-65.217391304347828"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="vaf-8M-WMU">
@@ -752,7 +752,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RI0-Xc-1li">
-                                <rect key="frame" x="0.0" y="417" width="375" height="250"/>
+                                <rect key="frame" x="0.0" y="461" width="375" height="206"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="placecell" rowHeight="100" id="AR8-8n-xcG" customClass="mapTableViewCell" customModule="GemApp" customModuleProvider="target">
@@ -794,8 +794,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Uc-no-0lD">
-                                <rect key="frame" x="0.0" y="20" width="375" height="397"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Uc-no-0lD">
+                                <rect key="frame" x="0.0" y="64" width="375" height="397"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -811,6 +811,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jPV-Yt-Rol"/>
                     </view>
+                    <navigationItem key="navigationItem" id="HNj-se-pO7"/>
                     <connections>
                         <outlet property="mapView" destination="2Uc-no-0lD" id="HC3-BB-Jxc"/>
                         <outlet property="tblPlaces" destination="RI0-Xc-1li" id="Aqz-FO-oYp"/>
@@ -818,7 +819,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mEg-Jg-Nnx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2414" y="-710"/>
+            <point key="canvasLocation" x="-1476" y="-710.19490254872574"/>
         </scene>
         <!--Splash ScreenVC-->
         <scene sceneID="mFe-ZD-GZN">
@@ -848,7 +849,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CEv-tR-zjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1151" y="-1096"/>
+            <point key="canvasLocation" x="-212" y="-1096.1019490254873"/>
         </scene>
         <!--Menu Table View Controller-->
         <scene sceneID="YfO-Fr-gyO">
@@ -894,7 +895,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="eOe-tp-a0U" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="1qv-gD-TBA"/>
+                                            <segue destination="eOe-tp-a0U" kind="custom" identifier="homeShow" customClass="SWRevealViewControllerSeguePushController" id="1qv-gD-TBA"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SBq-m5-tap">
@@ -964,7 +965,42 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="xdK-1w-ooE" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="1mq-qb-Ouh"/>
+                                            <segue destination="xdK-1w-ooE" kind="custom" identifier="loginShow" customClass="SWRevealViewControllerSeguePushController" id="1mq-qb-Ouh"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="KwD-B1-PED">
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KwD-B1-PED" id="W2y-md-XkX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logodia" translatesAutoresizingMaskIntoConstraints="NO" id="RD7-kC-yv5">
+                                                    <rect key="frame" x="15" y="5" width="38" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="38" id="3Y4-f9-sSX"/>
+                                                        <constraint firstAttribute="width" constant="38" id="l9O-F3-X0E"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Map" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9Z-ng-6nQ">
+                                                    <rect key="frame" x="68" y="0.0" width="307" height="21"/>
+                                                    <fontDescription key="fontDescription" name="GujaratiSangamMN" family="Gujarati Sangam MN" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="w9Z-ng-6nQ" firstAttribute="leading" secondItem="RD7-kC-yv5" secondAttribute="trailing" constant="15" id="3xG-Nl-Ei1"/>
+                                                <constraint firstAttribute="bottom" secondItem="w9Z-ng-6nQ" secondAttribute="bottom" id="7fe-7R-arS"/>
+                                                <constraint firstAttribute="bottom" secondItem="RD7-kC-yv5" secondAttribute="bottom" constant="5" id="Cvy-NE-WTi"/>
+                                                <constraint firstAttribute="trailing" secondItem="w9Z-ng-6nQ" secondAttribute="trailing" id="Ehf-mT-7ik"/>
+                                                <constraint firstItem="RD7-kC-yv5" firstAttribute="top" secondItem="W2y-md-XkX" secondAttribute="top" constant="5" id="c4G-An-Y81"/>
+                                                <constraint firstItem="RD7-kC-yv5" firstAttribute="leading" secondItem="W2y-md-XkX" secondAttribute="leading" constant="15" id="ptG-9y-Xpy"/>
+                                                <constraint firstItem="w9Z-ng-6nQ" firstAttribute="top" secondItem="W2y-md-XkX" secondAttribute="top" id="y23-ei-9Vp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="sgf-Kv-xOv" kind="custom" identifier="mapShow" customClass="SWRevealViewControllerSeguePushController" id="Cva-oh-kWj"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -983,7 +1019,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eKn-pz-Gux" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1762.3188405797102" y="-1057.3660714285713"/>
+            <point key="canvasLocation" x="2700" y="-1057.4212893553224"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="hTA-ih-4gt">
@@ -1005,7 +1041,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hgc-sp-5Dc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="263" y="-140"/>
+            <point key="canvasLocation" x="1200.8" y="-140.77961019490255"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oSj-aO-Yeu">
@@ -1026,6 +1062,24 @@
             </objects>
             <point key="canvasLocation" x="1516" y="629.2353823088456"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ByI-VC-BpS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sgf-Kv-xOv" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="I5y-v8-jmo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wya-YL-TM7" kind="relationship" relationship="rootViewController" id="2Y6-M6-dG3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5LF-dP-smN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2415.1999999999998" y="-710.19490254872574"/>
+        </scene>
     </scenes>
     <resources>
         <image name="WhiteMenu" width="30" height="30"/>
@@ -1036,11 +1090,12 @@
         <image name="home_black" width="512" height="512"/>
         <image name="login" width="512" height="512"/>
         <image name="login_white" width="512" height="512"/>
+        <image name="logodia" width="512" height="512"/>
         <image name="splashscreen" width="512" height="512"/>
         <image name="upload" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1qv-gD-TBA"/>
+        <segue reference="k4s-8h-dm0"/>
         <segue reference="cDu-xX-1kn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

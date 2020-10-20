@@ -45,7 +45,7 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tblPlaces.delegate = self
         tblPlaces.reloadData()
         
-        searchPlaceFromGoogle(longitude: "", latitude: "String")
+//        searchPlaceFromGoogle(longitude: "", latitude: "String")
         
         // tblPlaces.estimatedRowHeight = 100.0
         //  tblPlaces.rowHeight = UITableView.automaticDimension
@@ -169,9 +169,9 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     
-    func searchPlaceFromGoogle(longitude : String, latitude : String )
+    func searchPlaceFromGoogle(longitude : Double, latitude : Double )
     {
-        var strGoogleApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=rock+shop&type=store&location=40.7516341,-73.6991966&radius=1000&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
+        var strGoogleApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=rock+shop&type=store&location=\(longitude),\(latitude)&radius=1000&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
         
         //"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.7516341,-73.6991966&radius=15000&name=rock&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
         
@@ -232,6 +232,7 @@ extension MapVC: CLLocationManagerDelegate{
             zoomToLatestLocation(with: latestLocation.coordinate)
             //addAnnotations
         }
+        searchPlaceFromGoogle(longitude: latestLocation.coordinate.longitude, latitude: latestLocation.coordinate.latitude)
         currentCoordinate = latestLocation.coordinate
     }
     
@@ -318,6 +319,7 @@ extension MapVC: MKMapViewDelegate
         let index = resultsArray.filter{ $0["name"] as! String == mapItemName 
             
         }
+        print(index)
         let indexP = IndexPath(row: index[0]["key"] as! Int, section: 0)
         print(indexP)
         tblPlaces.scrollToRow(at: indexP, at: UITableView.ScrollPosition.top, animated: true)

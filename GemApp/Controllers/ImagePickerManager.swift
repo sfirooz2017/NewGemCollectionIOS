@@ -17,23 +17,28 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     var viewController: UIViewController?
     var pickImageCallback : ((UIImage) -> ())?;
     
-    override init(){
+    override init()
+    {
         super.init()
     }
     
-    func pickImage(_ viewController: UIViewController, _ callback: @escaping ((UIImage) -> ())) {
+    func pickImage(_ viewController: UIViewController, _ callback: @escaping ((UIImage) -> ()))
+    {
         pickImageCallback = callback;
         self.viewController = viewController;
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default){
+        let cameraAction = UIAlertAction(title: "Camera", style: .default)
+        {
             UIAlertAction in
             self.openCamera()
         }
-        let galleryAction = UIAlertAction(title: "Gallery", style: .default){
+        let galleryAction = UIAlertAction(title: "Gallery", style: .default)
+        {
             UIAlertAction in
             self.openGallery()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        {
             UIAlertAction in
         }
         
@@ -48,10 +53,13 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
     }
     func openCamera(){
         alert.dismiss(animated: true, completion: nil)
-        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+        if(UIImagePickerController .isSourceTypeAvailable(.camera))
+        {
             picker.sourceType = .camera
             self.viewController!.present(picker, animated: true, completion: nil)
-        } else {
+        }
+        else
+        {
             let alertWarning = UIAlertView(title:"Warning", message: "You don't have a camera", delegate:nil, cancelButtonTitle:"OK", otherButtonTitles:"")
             alertWarning.show()
         }
@@ -62,18 +70,10 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         self.viewController!.present(picker, animated: true, completion: nil)
     }
     
-    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    //for swift below 4.2
-    //func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-    //    picker.dismiss(animated: true, completion: nil)
-    //    let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-    //    pickImageCallback?(image)
-    //}
     
-    // For Swift 4.2+
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)
         guard let image = info[.editedImage] as? UIImage else {

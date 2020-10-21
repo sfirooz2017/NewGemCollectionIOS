@@ -12,17 +12,14 @@ import Firebase
 class ForgotPasswordVC: UIViewController {
 
     @IBOutlet weak var emailTextBox: customTextBox!
-    
     @IBOutlet weak var submitButton: UIButton!
-    
    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Forgot Password"
         self.hideKeyboardWhenTappedAround()
-
-        
     }
+    
     @IBAction func submitTapped(_ sender: Any) {
       
         if (emailTextBox.text?.isEmpty)!
@@ -33,11 +30,11 @@ class ForgotPasswordVC: UIViewController {
         if !(isValidEmail(testStr: emailTextBox.text!))
         {
             
-         sendAlert(title: "Error", message: "Please enter a valid email")
-           return
-    }
+            sendAlert(title: "Error", message: "Please enter a valid email")
+            return
+        }
          DataService.globalData.resetPassword(email: emailTextBox.text!)
         sendAlert(title: "Success!", message: "Reset link will expire in one hour")
-    }
+        }
     
 }

@@ -8,31 +8,27 @@
 
 import UIKit
 
-class GemTableViewCell: UITableViewCell {
-
+class GemTableViewCell: UITableViewCell
+{
   
     @IBOutlet weak var titlePreview: UILabel!
     @IBOutlet weak var imgPreview: UIImageView!
     @IBOutlet weak var colorPreview: UIView!
-    
-    
    
-    
-    override func awakeFromNib() {
+    override func awakeFromNib()
+    {
         super.awakeFromNib()
         // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: false)
-
         // Configure the view for the selected state
     }
    
-    func updateUi(rock: Rock){
-      
-       titlePreview.text = rock.name.capitalized
-    
+    func updateUi(rock: Rock)
+    {
+        titlePreview.text = rock.name.capitalized
         colorPreview.backgroundColor = hexStringToUIColor(hex: rock.color)
         colorPreview.layer.cornerRadius = 15
         
@@ -42,9 +38,7 @@ class GemTableViewCell: UITableViewCell {
         }
         else
         {
-        imgPreview.image = UIImage(named: "\(rock.name.replacingOccurrences(of: " ", with: "_"))_icon")
+            imgPreview.image = UIImage(named: "\(rock.name.replacingOccurrences(of: " ", with: "_"))_icon")
         }
     }
-
-  
 }

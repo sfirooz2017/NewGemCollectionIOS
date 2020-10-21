@@ -12,6 +12,7 @@ import CoreLocation
 
 class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tblPlaces: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     private let locationManager = CLLocationManager()
@@ -24,16 +25,22 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        sideMenus()
+        customizeNavBar()
+        
         mapView.delegate = self
-        mapView.showAnnotations(mapView.annotations, animated: true)
+        tblPlaces.dataSource = self
+        tblPlaces.delegate = self
         locationManager.delegate = self
         
+        mapView.showAnnotations(mapView.annotations, animated: true)
+      
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 50
         locationManager.requestLocation()
         //locationManager.startUpdatingLocation()
-        mapView.showsUserLocation = true
+      //  mapView.showsUserLocation = true
         
         
         //  locationManager(locationManager, didChangeAuthorization: CLLocationManager.authorizationStatus())
@@ -41,9 +48,9 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         //locationManager.requestWhenInUseAuthorization()
         //configureLocationServices()
         
-        tblPlaces.dataSource = self
-        tblPlaces.delegate = self
+     
         tblPlaces.reloadData()
+      
         
 //        searchPlaceFromGoogle(longitude: "", latitude: "String")
         
@@ -52,6 +59,13 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        tblPlaces.reloadData()
+        /*
+        let indexP = IndexPath(row: 0, section: 0)
+       tblPlaces.selectRow(at: indexP, animated: true, scrollPosition: UITableView.ScrollPosition.top)
+         */
     }
     
     
@@ -62,7 +76,7 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return resultsArray.count
     }
-    
+ 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "placecell", for: indexPath) as? mapTableViewCell{
@@ -79,7 +93,7 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
           */
             
             cell.updateUi(name: place["name"] as! String, address: place["formatted_address"] as! String)
-            
+          
             
             return cell
             
@@ -90,6 +104,14 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? mapTableViewCell{
+         cell.cellSelected()
+        }
+ 
+        tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
+    
+        
         let place = self.resultsArray[indexPath.row]
         if let locationGeometry = place["geometry"] as? Dictionary<String, AnyObject> {
             if let location = locationGeometry["location"] as? Dictionary<String, AnyObject> {
@@ -148,7 +170,7 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
      */
     private func beginLocationUpdates(locationManager: CLLocationManager)
     {
-        print("shan: REACHED")
+      
         mapView.showsUserLocation = true
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
@@ -212,6 +234,11 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                                 
                                 
                                 self.tblPlaces.reloadData()
+                                let indexP = IndexPath(row: 0, section: 0)
+                                self.tblPlaces.selectRow(at: indexP, animated: false, scrollPosition: UITableView.ScrollPosition.top)
+                                self.tblPlaces.delegate?.tableView!(self.self.tblPlaces, didSelectRowAt: indexP)
+                               // let viewRegion = MKCoordinateRegion(center: l.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
+                                //mapView.setRegion(viewRegion, animated: true)
                             }
                         }
                     }
@@ -219,6 +246,7 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
             
             task.resume()
+        
         }
     }
 }
@@ -247,9 +275,32 @@ extension MapVC: CLLocationManagerDelegate{
             locationManager.requestLocation()
             // beginLocationUpdates(locationManager: manager)
         }
+        else
+        {
+            sendAlert(title: "Cannot access", message: "Please turn on Location Services to view nearby stores")
+        }
+        
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
+    }
+    func sideMenus(){
+        
+        if revealViewController() != nil{
+            
+            menuButton.target = revealViewController()
+            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+            revealViewController().rearViewRevealWidth = 275
+            
+            
+            view.addGestureRecognizer((self.revealViewController()!.panGestureRecognizer()))
+            view.addGestureRecognizer((self.revealViewController()!.tapGestureRecognizer()))
+            
+        }
+    }
+    func customizeNavBar(){
+        navigationController?.navigationBar.tintColor = UIColor.white
+        
     }
 }
 extension MapVC: MKMapViewDelegate
@@ -315,13 +366,12 @@ extension MapVC: MKMapViewDelegate
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        print("hi")
+   
         let index = resultsArray.filter{ $0["name"] as! String == mapItemName 
             
         }
-        print(index)
         let indexP = IndexPath(row: index[0]["key"] as! Int, section: 0)
-        print(indexP)
+     
         tblPlaces.scrollToRow(at: indexP, at: UITableView.ScrollPosition.top, animated: true)
         // selectedPin = MKPlacemark(coordinate: view.annotation.coordinate)
         

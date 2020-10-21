@@ -9,13 +9,12 @@
 import Foundation
 
 class Rock{
+    
     private var _imageURL: UIImage?
     private var _month: String?
     private var _color: String!
     private var _description: String!
     private var _name: String!
-    
-  
     private var _index: Int!
     private var _collected: Bool?
     private var _key: String!

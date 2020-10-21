@@ -15,23 +15,23 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var tempArray = [Rock]()
-      public var collection = false
+    public var collection = false
     
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool)
+    {
         super.viewWillAppear(animated)
-       
         reloadList()
-         tableView.reloadData()
+        tableView.reloadData()
         searchBar.text = ""
     }
-    override func viewDidLoad() {
-          super.viewDidLoad()
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         if collection
         {
             title = "Collection"
-       
         }
 
         sideMenus()
@@ -39,9 +39,10 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         
       tableView.delegate = self
       tableView.dataSource = self
-        tableView.allowsSelection = true
+      tableView.allowsSelection = true
       searchBar.delegate = self
-       let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
+      
+        let textFieldInsideUISearchBar = searchBar.value(forKey: "searchField") as? UITextField
         textFieldInsideUISearchBar?.textColor = UIColor.white
         textFieldInsideUISearchBar?.attributedPlaceholder = NSAttributedString(string: searchBar.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
 
@@ -57,23 +58,25 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             return cell
             
         }
-      
         return UITableViewCell()
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tempArray.count
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let rock = tempArray[indexPath.row]
         performSegue(withIdentifier: "RockResult", sender: rock)
     }
     
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if let destination = segue.destination as? RockResultVC{
-        if let r = sender as? Rock{
-            destination.rock = r
+        if let destination = segue.destination as? RockResultVC
+        {
+            if let r = sender as? Rock{
+                destination.rock = r
+            }
         }
-    }
     }
 
     public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -81,14 +84,14 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             if collection{
                     tempArray = DataService.globalData.rockList.filter({ (rock) -> Bool in
                         if rock.collected != nil
-                        {return rock.collected! ? true : false}
+                            {return rock.collected! ? true : false}
                         return false
                         })
                 
             }
             else
             {
-            tempArray = DataService.globalData.rockList
+                tempArray = DataService.globalData.rockList
             }
             tableView.reloadData()
             return
@@ -102,7 +105,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
             {
                 if collection
                 {
-                return rock.collected != nil && rock.collected!
+                    return rock.collected != nil && rock.collected!
                 }
                 return true
             }
@@ -119,12 +122,11 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         if revealViewController() != nil{
         
            menuButton.target = revealViewController()
-            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            revealViewController().rearViewRevealWidth = 275
-
+           menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
+           revealViewController().rearViewRevealWidth = 275
             
-            view.addGestureRecognizer((self.revealViewController()!.panGestureRecognizer()))
-            view.addGestureRecognizer((self.revealViewController()!.tapGestureRecognizer()))
+           view.addGestureRecognizer((self.revealViewController()!.panGestureRecognizer()))
+           view.addGestureRecognizer((self.revealViewController()!.tapGestureRecognizer()))
 
         }
  
@@ -136,26 +138,24 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     
         if collection
         {
-     
-        for x in 0...DataService.globalData.rockList.count - 1
-        {
-            if DataService.globalData.rockList[x].collected != nil && DataService.globalData.rockList[x].collected!
+         
+            for x in 0...DataService.globalData.rockList.count - 1
             {
-                tempArray.append(DataService.globalData.rockList[x])
+                if DataService.globalData.rockList[x].collected != nil && DataService.globalData.rockList[x].collected!
+                {
+                    tempArray.append(DataService.globalData.rockList[x])
+                }
             }
-        }
         }
         else
         {
             tempArray = DataService.globalData.rockList
-
         }
     }
     
     func customizeNavBar(){
        navigationController?.navigationBar.tintColor = UIColor.white
-        
-    }
+        }
 }
 
 

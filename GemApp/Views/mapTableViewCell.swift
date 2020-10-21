@@ -12,7 +12,6 @@ class mapTableViewCell: UITableViewCell {
 
 
     @IBOutlet weak var nameLbl: UILabel!
-    
     @IBOutlet weak var addressLbl: UILabel!
     
     override func awakeFromNib() {
@@ -20,16 +19,22 @@ class mapTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool)
+    {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-    func updateUi(name: String, address: String){
-        
+    func updateUi(name: String, address: String)
+    {
         nameLbl.text = name
         addressLbl.text = address
-        
     }
-    
+    func cellSelected()
+    {
+        contentView.backgroundColor = hexStringToUIColor(hex:"D7D7D7")
+    }
+    func celldeSelected()
+    {
+        contentView.backgroundColor = hexStringToUIColor(hex:"ECEAEA")
+    }
 }

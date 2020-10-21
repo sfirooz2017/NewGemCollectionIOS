@@ -23,6 +23,8 @@ class DataService
     private var _REF_IMAGES = STORAGE_BASE.child("images")
     private var _rockList: [Rock] = []
     private var _currentUser: String?
+    private var _key: String = "AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
+    var radius: Int = 800
     
     var REF_BASE: DatabaseReference{
         return _REF_BASE
@@ -35,6 +37,9 @@ class DataService
     }
     var REF_IMAGES: StorageReference{
         return _REF_IMAGES
+    }
+    var key: String{
+        return _key
     }
     var rockList: [Rock]{
         get
@@ -64,42 +69,34 @@ class DataService
         }
     }
     
-    func searchPlaceFromGoogle(latitude : Double, longitude : Double,  completion: @escaping (Bool, [Dictionary<String, AnyObject>]) -> Void)
+    func searchPlaceFromGoogle(latitude : Double, longitude : Double,  completion: @escaping (Bool, [Dictionary<String, AnyObject>]?) -> Void)
     {
-        var strGoogleApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=rock+shop&type=store&location=\(latitude),\(longitude)&radius=1000&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
+        var strGoogleApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=rock+shop&type=store&location=\(latitude),\(longitude)&radius=\(radius)&key=\(key)"
         
         strGoogleApi = strGoogleApi.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
         var urlRequest = URLRequest(url: URL(string : strGoogleApi)!)
         urlRequest.httpMethod = "GET"
-      
         
             let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                if error == nil{
-                    
+                if error == nil
+                {
                     let jsonDict = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                    if let dict = jsonDict as? Dictionary<String, AnyObject>{
+                    if let dict = jsonDict as? Dictionary<String, AnyObject>
+                    {
                         if let results = dict["results"] as? [Dictionary<String, AnyObject>]
                         {
+                            print("true")
                             completion(true, results)
                         }
                     }
-                   
-
                 }
-                
+                else
+                {
+                    completion(false, nil)
+                }
             }
-             task.resume()
-        
-        
-        // DispatchQueue.main.sync {
-        
-        
-   
-        
-        // let viewRegion = MKCoordinateRegion(center: l.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
-        //mapView.setRegion(viewRegion, animated: true)
-        //  }
+            task.resume()
     }
     func logOut()
     {

@@ -137,6 +137,7 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     dct["key"] = x as AnyObject
                     x = x + 1
                     self.resultsArray.append(dct)
+                    print(dct)
                     if let locationGeometry = dct["geometry"] as? Dictionary<String, AnyObject>
                     {
                         if let location = locationGeometry["location"] as? Dictionary<String, AnyObject>

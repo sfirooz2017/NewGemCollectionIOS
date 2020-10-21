@@ -86,7 +86,6 @@ class DataService
                     {
                         if let results = dict["results"] as? [Dictionary<String, AnyObject>]
                         {
-                            print("true")
                             completion(true, results)
                         }
                     }

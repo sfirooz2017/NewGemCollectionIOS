@@ -16,10 +16,10 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var tblPlaces: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     private let locationManager = CLLocationManager()
-    private var currentCoordinate: CLLocationCoordinate2D?
+    private var currentLocation: CLLocation?
     var selectedPin:MKPlacemark? = nil
     var mapItemName:String!
-    
+    var metToMil:Double = 1609.344
     var resultsArray:[Dictionary<String, AnyObject>] = Array()
     
     override func viewDidLoad() {
@@ -34,11 +34,13 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         locationManager.delegate = self
         
         mapView.showAnnotations(mapView.annotations, animated: true)
-      
+        configureLocationServices()
+        /*
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 50
         locationManager.requestLocation()
+         */
         //locationManager.startUpdatingLocation()
       //  mapView.showsUserLocation = true
         
@@ -49,7 +51,7 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         //configureLocationServices()
         
      
-        tblPlaces.reloadData()
+     //   tblPlaces.reloadData()
       
         
 //        searchPlaceFromGoogle(longitude: "", latitude: "String")
@@ -61,7 +63,7 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
-        tblPlaces.reloadData()
+       // tblPlaces.reloadData()
         /*
         let indexP = IndexPath(row: 0, section: 0)
        tblPlaces.selectRow(at: indexP, animated: true, scrollPosition: UITableView.ScrollPosition.top)
@@ -92,22 +94,18 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             print(x[0]["name"])
           */
             
-            cell.updateUi(name: place["name"] as! String, address: place["formatted_address"] as! String)
+                    cell.updateUi(name: place["name"] as! String, address: place["formatted_address"] as! String)
           
             
             return cell
-            
+               
         }
         return UITableViewCell()
     }
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        if let cell = tableView.cellForRow(at: indexPath) as? mapTableViewCell{
-         cell.cellSelected()
-        }
+        //tableView.deselectRow(at: indexPath, animated: true)
  
         tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
     
@@ -124,9 +122,11 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                         
                         let mapItem = MKMapItem(placemark: p)
                         mapItem.name = place["name"] as? String
-                        
+                        zoomToLatestLocation(coordinate: l.coordinate, latRange: 200, longRange: 200)
+                      /*
                         let viewRegion = MKCoordinateRegion(center: l.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
                         mapView.setRegion(viewRegion, animated: true)
+ */
                         
                         /*
                         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
@@ -150,122 +150,18 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
-    /*
+
+    
+    
      private func configureLocationServices()
      {
      locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 50
      let status = CLLocationManager.authorizationStatus()
      
      print("shan \(status)")
-     if status == .notDetermined
-     {
-     locationManager.requestAlwaysAuthorization()
-     }
-     else if status == .authorizedAlways || status == .authorizedWhenInUse
-     {
-     beginLocationUpdates(locationManager: locationManager)
-     }
-     
-     }
-     */
-    private func beginLocationUpdates(locationManager: CLLocationManager)
-    {
-      
-        mapView.showsUserLocation = true
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.startUpdatingLocation()
-    }
-    private func zoomToLatestLocation(with coordinate: CLLocationCoordinate2D)
-    {
-        let zoomRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
-        mapView.setRegion(zoomRegion, animated: true)
-    }
-    
-    func addAnnotation(name: String, longitude: Double, latitude: Double)
-    {
-        let tempAnnotation = MKPointAnnotation()
-        tempAnnotation.title = name
-        tempAnnotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        mapView.addAnnotation(tempAnnotation)
         
-    }
-    
-    
-    func searchPlaceFromGoogle(longitude : Double, latitude : Double )
-    {
-        var strGoogleApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=rock+shop&type=store&location=\(longitude),\(latitude)&radius=1000&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
-        
-        //"https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.7516341,-73.6991966&radius=15000&name=rock&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
-        
-        //"https://www.maps.googleapis.com/maps/api/place/textsearch/json?query=dunkin&key=AIzaSyCeLTyRdml-US03Ct8I6TKuiMAZSHBsX34"
-        
-        //rock+shop/@40.7516341,-73.6991966,9z/data=!3m1!4b1"
-        
-        //"https://www.google.com/maps/search/rock+shop/@(longitude),(latitude),10z/data=!3m1!4b1"
-        strGoogleApi = strGoogleApi.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-        
-        var urlRequest = URLRequest(url: URL(string : strGoogleApi)!)
-        urlRequest.httpMethod = "GET"
-        DispatchQueue.main.async {
-            
-            
-            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-                if error == nil{
-                    
-                    let jsonDict = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
-                    if let dict = jsonDict as? Dictionary<String, AnyObject>{
-                        if let results = dict["results"] as? [Dictionary<String, AnyObject>]
-                        {
-                            self.resultsArray.removeAll()
-                            var x = 0;
-                            for dct in results{
-                                var dct = dct
-                                dct["key"] = x as AnyObject
-                                x = x + 1
-                                self.resultsArray.append(dct)
-                                if let locationGeometry = dct["geometry"] as? Dictionary<String, AnyObject> {
-                                    if let location = locationGeometry["location"] as? Dictionary<String, AnyObject> {
-                                        self.addAnnotation(name: dct["name"] as! String, longitude: location["lng"] as! Double, latitude: location["lat"] as! Double)
-                                        
-                                    }
-                                }
-                            }
-                            DispatchQueue.main.sync {
-                                
-                                
-                                self.tblPlaces.reloadData()
-                                let indexP = IndexPath(row: 0, section: 0)
-                                self.tblPlaces.selectRow(at: indexP, animated: false, scrollPosition: UITableView.ScrollPosition.top)
-                                self.tblPlaces.delegate?.tableView!(self.self.tblPlaces, didSelectRowAt: indexP)
-                               // let viewRegion = MKCoordinateRegion(center: l.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
-                                //mapView.setRegion(viewRegion, animated: true)
-                            }
-                        }
-                    }
-                }
-            }
-            
-            task.resume()
-        
-        }
-    }
-}
-extension MapVC: CLLocationManagerDelegate{
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("did get latest location")
-        
-        guard let latestLocation = locations.first else {return}
-        
-        if currentCoordinate == nil{
-            zoomToLatestLocation(with: latestLocation.coordinate)
-            //addAnnotations
-        }
-        searchPlaceFromGoogle(longitude: latestLocation.coordinate.longitude, latitude: latestLocation.coordinate.latitude)
-        currentCoordinate = latestLocation.coordinate
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        print("status changed")
         if status == .notDetermined
         {
             locationManager.requestAlwaysAuthorization()
@@ -279,6 +175,156 @@ extension MapVC: CLLocationManagerDelegate{
         {
             sendAlert(title: "Cannot access", message: "Please turn on Location Services to view nearby stores")
         }
+ 
+     
+     }
+    
+    
+    /*
+    private func beginLocationUpdates(locationManager: CLLocationManager)
+    {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.startUpdatingLocation()
+    }
+    */
+    private func zoomToLatestLocation(coordinate: CLLocationCoordinate2D, latRange: Double, longRange: Double)
+    {
+        let zoomRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: longRange, longitudinalMeters: latRange)
+        mapView.setRegion(zoomRegion, animated: true)
+    }
+    
+    func addAnnotation(name: String, longitude: Double, latitude: Double)
+    {
+        let tempAnnotation = MKPointAnnotation()
+        tempAnnotation.title = name
+        tempAnnotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        mapView.addAnnotation(tempAnnotation)
+        
+    }
+    func populateDct(latitude: Double, longitude: Double)
+    {
+          DispatchQueue.main.async {
+        DataService.globalData.searchPlaceFromGoogle(latitude: latitude, longitude: longitude) { (error, results) in
+            
+        
+    self.resultsArray.removeAll()
+    var x = 0;
+    for dct in results{
+    var dct = dct
+    dct["key"] = x as AnyObject
+    x = x + 1
+    self.resultsArray.append(dct)
+    if let locationGeometry = dct["geometry"] as? Dictionary<String, AnyObject> {
+    if let location = locationGeometry["location"] as? Dictionary<String, AnyObject> {
+    self.addAnnotation(name: dct["name"] as! String, longitude: location["lng"] as! Double, latitude: location["lat"] as! Double)
+    
+    }
+    }
+    }
+            DispatchQueue.main.sync {
+                self.tblPlaces.reloadData()
+                let indexP = IndexPath(row: 0, section: 0)
+                //self.tblPlaces.selectRow(at: indexP, animated: false, scrollPosition: UITableView.ScrollPosition.top)
+              //  self.tblPlaces.delegate?.tableView!(self.self.tblPlaces, didSelectRowAt: indexP)
+               
+        }
+            
+        }
+        
+        }
+    }
+//
+//    func searchPlaceFromGoogle(longitude : Double, latitude : Double )
+//    {
+//        var strGoogleApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=rock+shop&type=store&location=\(longitude),\(latitude)&radius=1000&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
+//
+//
+//
+//        strGoogleApi = strGoogleApi.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+//
+//        var urlRequest = URLRequest(url: URL(string : strGoogleApi)!)
+//        urlRequest.httpMethod = "GET"
+//        DispatchQueue.main.async {
+//
+//
+//            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+//                if error == nil{
+//
+//                    let jsonDict = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+//                    if let dict = jsonDict as? Dictionary<String, AnyObject>{
+//                        if let results = dict["results"] as? [Dictionary<String, AnyObject>]
+//                        {
+//                            self.resultsArray.removeAll()
+//                            var x = 0;
+//                            for dct in results{
+//                                var dct = dct
+//                                dct["key"] = x as AnyObject
+//                                x = x + 1
+//                                self.resultsArray.append(dct)
+//                                if let locationGeometry = dct["geometry"] as? Dictionary<String, AnyObject> {
+//                                    if let location = locationGeometry["location"] as? Dictionary<String, AnyObject> {
+//                                        self.addAnnotation(name: dct["name"] as! String, longitude: location["lng"] as! Double, latitude: location["lat"] as! Double)
+//
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//
+//                }
+//
+//            }
+//
+//            task.resume()
+//
+//        }
+//       // DispatchQueue.main.sync {
+//
+//
+//            self.tblPlaces.reloadData()
+//            let indexP = IndexPath(row: 0, section: 0)
+//            //self.tblPlaces.selectRow(at: indexP, animated: false, scrollPosition: UITableView.ScrollPosition.top)
+//            self.tblPlaces.delegate?.tableView!(self.self.tblPlaces, didSelectRowAt: indexP)
+//            print("only should happen once")
+//
+//            // let viewRegion = MKCoordinateRegion(center: l.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
+//            //mapView.setRegion(viewRegion, animated: true)
+//      //  }
+//    }
+}
+extension MapVC: CLLocationManagerDelegate{
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("did get latest location")
+        
+        guard let latestLocation = locations.first else {return}
+        
+        if currentLocation == nil{
+            zoomToLatestLocation(coordinate: latestLocation.coordinate, latRange: 10000, longRange: 10000)
+            //addAnnotations
+        }
+        populateDct(latitude: latestLocation.coordinate.latitude, longitude: latestLocation.coordinate.longitude)
+//        searchPlaceFromGoogle(longitude: latestLocation.coordinate.longitude, latitude: latestLocation.coordinate.latitude)
+        currentLocation = latestLocation
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        print("status changed")
+        configureLocationServices()
+        /*
+        if status == .notDetermined
+        {
+            locationManager.requestAlwaysAuthorization()
+        }
+        else if status == .authorizedWhenInUse || status == .authorizedAlways
+        {
+            locationManager.requestLocation()
+            // beginLocationUpdates(locationManager: manager)
+        }
+        else
+        {
+            sendAlert(title: "Cannot access", message: "Please turn on Location Services to view nearby stores")
+        }
+ */
         
     }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
@@ -367,12 +413,14 @@ extension MapVC: MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
    
-        let index = resultsArray.filter{ $0["name"] as! String == mapItemName 
+        let index = resultsArray.filter{ $0["name"] as? String == mapItemName
             
         }
         let indexP = IndexPath(row: index[0]["key"] as! Int, section: 0)
      
         tblPlaces.scrollToRow(at: indexP, at: UITableView.ScrollPosition.top, animated: true)
+        self.tblPlaces.delegate?.tableView!(self.self.tblPlaces, didSelectRowAt: indexP)
+
         // selectedPin = MKPlacemark(coordinate: view.annotation.coordinate)
         
         //     selectedPin = view.annotation

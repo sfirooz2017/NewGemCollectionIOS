@@ -14,6 +14,7 @@ class mapTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
     
+    @IBOutlet weak var distanceLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,13 +29,8 @@ class mapTableViewCell: UITableViewCell {
     {
         nameLbl.text = name
         addressLbl.text = address
+        
     }
-    func cellSelected()
-    {
-        contentView.backgroundColor = hexStringToUIColor(hex:"D7D7D7")
-    }
-    func celldeSelected()
-    {
-        contentView.backgroundColor = hexStringToUIColor(hex:"ECEAEA")
-    }
+ 
+    
 }

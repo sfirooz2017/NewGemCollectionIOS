@@ -12,7 +12,8 @@ import Firebase
 let DB_BASE = Database.database().reference()
 let STORAGE_BASE = Storage.storage().reference()
 
-class DataService{
+class DataService
+{
     
     static let globalData = DataService()
     
@@ -62,6 +63,44 @@ class DataService{
             }
         }
     }
+    
+    func searchPlaceFromGoogle(latitude : Double, longitude : Double,  completion: @escaping (Bool, [Dictionary<String, AnyObject>]) -> Void)
+    {
+        var strGoogleApi = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=rock+shop&type=store&location=\(latitude),\(longitude)&radius=1000&key=AIzaSyBMpZHmT0fNvIpFafdv9vX7YutC-pYoCeQ"
+        
+        strGoogleApi = strGoogleApi.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+        
+        var urlRequest = URLRequest(url: URL(string : strGoogleApi)!)
+        urlRequest.httpMethod = "GET"
+      
+        
+            let task = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+                if error == nil{
+                    
+                    let jsonDict = try? JSONSerialization.jsonObject(with: data!, options: .mutableContainers)
+                    if let dict = jsonDict as? Dictionary<String, AnyObject>{
+                        if let results = dict["results"] as? [Dictionary<String, AnyObject>]
+                        {
+                            completion(true, results)
+                        }
+                    }
+                   
+
+                }
+                
+            }
+             task.resume()
+        
+        
+        // DispatchQueue.main.sync {
+        
+        
+   
+        
+        // let viewRegion = MKCoordinateRegion(center: l.coordinate, latitudinalMeters: 200, longitudinalMeters: 200)
+        //mapView.setRegion(viewRegion, animated: true)
+        //  }
+    }
     func logOut()
     {
         do
@@ -87,9 +126,10 @@ class DataService{
     func resetPassword(email: String)
     {
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
-        if error != nil
-        {
-            print("Could not send email")
+            if error != nil
+            {
+                print("Could not send email")
+            }
         }
     }
         
@@ -140,7 +180,6 @@ class DataService{
                 print(" Uh-oh, an error occurred!")
             }
         }
-        
     }
-        
 }
+

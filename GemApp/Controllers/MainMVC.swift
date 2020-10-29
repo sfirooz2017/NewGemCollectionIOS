@@ -16,7 +16,8 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     @IBOutlet weak var tableView: UITableView!
     var tempArray = [Rock]()
     public var collection = false
-    
+    public var wishlist = false
+    public var favorites = false
 
     override func viewWillAppear(_ animated: Bool)
     {
@@ -32,6 +33,14 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         if collection
         {
             title = "Collection"
+        }
+        else if wishlist
+        {
+            title = "Wishlist"
+        }
+        else if favorites
+        {
+            title = "Favorites"
         }
 
         sideMenus()
@@ -89,6 +98,22 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                         })
                 
             }
+           else if wishlist{
+                tempArray = DataService.globalData.rockList.filter({ (rock) -> Bool in
+                    if rock.wishlist != nil
+                    {return rock.wishlist! ? true : false}
+                    return false
+                })
+                
+            }
+           else if favorites{
+                tempArray = DataService.globalData.rockList.filter({ (rock) -> Bool in
+                    if rock.favorites != nil
+                    {return rock.favorites! ? true : false}
+                    return false
+                })
+                
+            }
             else
             {
                 tempArray = DataService.globalData.rockList
@@ -106,6 +131,14 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                 if collection
                 {
                     return rock.collected != nil && rock.collected!
+                }
+                if wishlist
+                {
+                    return rock.wishlist != nil && rock.wishlist!
+                }
+                if favorites
+                {
+                    return rock.favorites != nil && rock.favorites!
                 }
                 return true
             }
@@ -147,6 +180,28 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
                 }
             }
         }
+        else if wishlist
+        {
+            
+            for x in 0...DataService.globalData.rockList.count - 1
+            {
+                if DataService.globalData.rockList[x].wishlist != nil && DataService.globalData.rockList[x].wishlist!
+                {
+                    tempArray.append(DataService.globalData.rockList[x])
+                }
+            }
+        }
+        else if favorites
+        {
+            for x in 0...DataService.globalData.rockList.count - 1
+            {
+                if DataService.globalData.rockList[x].favorites != nil && DataService.globalData.rockList[x].favorites!
+                {
+                    tempArray.append(DataService.globalData.rockList[x])
+                }
+            }
+        }
+        
         else
         {
             tempArray = DataService.globalData.rockList

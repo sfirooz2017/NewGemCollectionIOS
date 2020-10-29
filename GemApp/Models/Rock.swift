@@ -17,6 +17,8 @@ class Rock{
     private var _name: String!
     private var _index: Int!
     private var _collected: Bool?
+    private var _favorites: Bool?
+    private var _wishlist: Bool?
     private var _key: String!
     
     var name: String{
@@ -39,6 +41,18 @@ class Rock{
         {return _collected}
         set
         {_collected = newValue}
+    }
+    var favorites: Bool?{
+        get
+        {return _favorites}
+        set
+        {_favorites = newValue}
+    }
+    var wishlist: Bool?{
+        get
+        {return _wishlist}
+        set
+        {_wishlist = newValue}
     }
     var imageURL: UIImage?{
         get

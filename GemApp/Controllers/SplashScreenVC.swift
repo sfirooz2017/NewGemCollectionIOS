@@ -17,7 +17,11 @@ class SplashScreenVC: UIViewController {
         if user != nil
         {
             DataService.globalData.currentUser = user!
-            loadUserData(user: user!)
+            loadList(user: user!, child: "rocks")
+            loadList(user: user!, child: "wishlist")
+            loadList(user: user!, child: "favorites")
+
+           // loadUserData(user: user!)
         }
         else
         {
@@ -82,5 +86,40 @@ class SplashScreenVC: UIViewController {
             }
         })
     }
-}
+    func loadList(user: String, child: String)
+    {
+        DataService.globalData.REF_USERS.child("\(user)").child(child).observe(.value, with: {(snapshot) in
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+            {
+                for snap in snapshot
+                {
+                    let index = DataService.globalData.rockList.firstIndex(where: {$0.key == snap.key})
+                    if child == "rocks"
+                    {
+                    DataService.globalData.rockList[index!].collected = true
+                    
+                    if (snap.hasChildren())
+                    {
+                        let img = snap.childSnapshot(forPath: snap.key).value as! String
+                        let url = URL(string: img)
+                        let data = try? Data(contentsOf: url!)
+                        let image = UIImage(data: data!)
+                        DataService.globalData.rockList[index!].imageURL = image
+                    }
+                    }
+                    else if child == "wishlist"
+                    {
+                        DataService.globalData.rockList[index!].wishlist = true
+                    }
+                    else if child == "favorites"
+                    {
+                        DataService.globalData.rockList[index!].favorites = true
+                        self.performSegue(withIdentifier: "SplashScreenToMain", sender: nil)
 
+                    }
+                }
+//                    self.performSegue(withIdentifier: "SplashScreenToMain", sender: nil)
+            }
+        })
+    }
+}

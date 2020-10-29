@@ -18,7 +18,9 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     @IBOutlet weak var descriptionLbl: UILabel!
     @IBOutlet weak var colorView: UIView!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var removeButton: UIButton!
+    @IBOutlet weak var wishlistButton: UIButton!
     @IBOutlet weak var uploadButton: UIButton!
     var imagePicker: UIImagePickerController!
     private var _rock: Rock!
@@ -146,6 +148,15 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         collectionCheck()
     }
     
+    
+    @IBAction func favoritePressed(_ sender: Any) {
+         DataService.globalData.writeData(data: rock.key, path: "users/\(DataService.globalData.currentUser)/favorites")
+    }
+    
+    
+    @IBAction func wishlistPressed(_ sender: Any) {
+         DataService.globalData.writeData(data: rock.key, path: "users/\(DataService.globalData.currentUser)/wishlist")
+    }
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
     {
         if let image = info[.editedImage] as? UIImage

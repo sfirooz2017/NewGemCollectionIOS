@@ -25,7 +25,7 @@ class MenuTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 6
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -44,6 +44,18 @@ class MenuTableViewController: UITableViewController {
             let navVC = segue.destination as? UINavigationController
             let mainVC = navVC?.viewControllers.first as! MainMVC
             mainVC.collection = true
+        }
+        else if segue.identifier == "wishlistShow"
+        {
+            let navVC = segue.destination as? UINavigationController
+            let mainVC = navVC?.viewControllers.first as! MainMVC
+            mainVC.wishlist = true
+        }
+       else if segue.identifier == "favoritesShow"
+        {
+            let navVC = segue.destination as? UINavigationController
+            let mainVC = navVC?.viewControllers.first as! MainMVC
+            mainVC.favorites = true
         }
     }
 

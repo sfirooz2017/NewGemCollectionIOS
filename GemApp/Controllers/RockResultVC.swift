@@ -71,6 +71,8 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
         {
             imgView.image = UIImage(named: rock.name.replacingOccurrences(of: " ", with: "_"))
             addButton.isHidden = true
+            favoriteButton.isHidden = true
+            wishlistButton.isHidden = true
         }
         
         colorView.backgroundColor = hexStringToUIColor(hex: rock.color)
@@ -150,7 +152,19 @@ class RockResultVC: UIViewController, UIImagePickerControllerDelegate, UINavigat
     
     
     @IBAction func favoritePressed(_ sender: Any) {
+        if rock.favorites != nil && !rock.favorites!
+        {
+            rock.favorites = true
          DataService.globalData.writeData(data: rock.key, path: "users/\(DataService.globalData.currentUser)/favorites")
+              favoriteButton.setBackgroundImage(UIImage(named: "favoritesBlack"), for: UIControl.State.normal )
+        }
+        else
+        {
+            rock.favorites = false
+        DataService.globalData.removeData(data: rock.key, path: "users/\(DataService.globalData.currentUser)/favorites")
+            favoriteButton.setBackgroundImage(UIImage(named: "favorites"), for: UIControl.State.normal )
+
+        }
     }
     
     

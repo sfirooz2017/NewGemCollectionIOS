@@ -35,6 +35,10 @@ class SplashScreenVC: UIViewController {
         
         if DataService.globalData.rockList.count == 0
         {
+            loadRockList(user: user!, path: "rocks")
+            loadRockList(user: user!, path: "users/\(user)/customRocks")
+
+            /*
             DataService.globalData.REF_ROCKS.queryOrdered(byChild: "color").observe(.value, with: {(snapshot) in
                 if let snapshot = snapshot.children.allObjects as? [DataSnapshot]
                 {
@@ -57,6 +61,7 @@ class SplashScreenVC: UIViewController {
                 }
                 self.onDataLoaded(user: user)
             })
+ */
         }
         else
         {
@@ -86,6 +91,35 @@ class SplashScreenVC: UIViewController {
             }
         })
     }
+    
+    func loadRockList(user: String, path: String)
+    {
+        DataService.globalData.REF_BASE.child(path).queryOrdered(byChild: "color").observe(.value, with: {(snapshot) in
+            if let snapshot = snapshot.children.allObjects as? [DataSnapshot]
+            {
+                for snap in snapshot
+                {
+                    let value = snap.value as? NSDictionary
+                    let name = value?["name"] as? String
+                    let color = value?["color"] as? String
+                    let description = value?["description"] as? String
+                    let month = value?["month"] as? String
+                    if (month == nil)
+                    {
+                        DataService.globalData.rockList.append(Rock.init(name: name!, description: description!, color: color!, key: snap.key))
+                    }
+                    else
+                    {
+                        DataService.globalData.rockList.append(Rock.init(name: name!, description: description!, color: color!, key: snap.key, month: month!))
+                    }
+                }
+            }
+            self.onDataLoaded(user: user)
+        })
+    }
+    
+    
+    
     func loadList(user: String, child: String)
     {
         DataService.globalData.REF_USERS.child("\(user)").child(child).observe(.value, with: {(snapshot) in

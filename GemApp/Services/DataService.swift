@@ -97,6 +97,7 @@ class DataService
             }
             task.resume()
     }
+ 
     func logOut()
     {
         do
@@ -132,6 +133,11 @@ class DataService
     func writeData(data: String, path: String)
     {
         REF_BASE.child(path).child(data).setValue(data)
+    }
+    func writeRock(path: String, rock: Dictionary<String, String>)
+    {
+        REF_BASE.child(path).childByAutoId().setValue(rock)
+        
     }
  
     func removeData(data: String, path: String)

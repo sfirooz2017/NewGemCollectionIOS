@@ -32,12 +32,18 @@ class GemTableViewCell: UITableViewCell
         colorPreview.backgroundColor = hexStringToUIColor(hex: rock.color)
         colorPreview.layer.cornerRadius = 15
         
-        if(rock.imageURL != nil)
+        if rock.imageURL != nil
         {
                 imgPreview.image = rock.imageURL
         }
+        else if rock.custom != nil && rock.custom!
+        {
+          imgPreview.image = loadImageFromDocumentDirectory(nameOfImage: rock.name.replacingOccurrences(of: " ", with: "_"))
+            
+        }
         else
         {
+            
             imgPreview.image = UIImage(named: "\(rock.name.replacingOccurrences(of: " ", with: "_"))_icon")
         }
     }

@@ -134,9 +134,12 @@ class DataService
     {
         REF_BASE.child(path).child(data).setValue(data)
     }
-    func writeRock(path: String, rock: Dictionary<String, String>)
+    func writeRock(path: String, rock: Dictionary<String, String>) -> String
     {
-        REF_BASE.child(path).childByAutoId().setValue(rock)
+        
+        let tempRef = REF_BASE.child(path).childByAutoId() //.setValue(rock)
+        tempRef.setValue(rock)
+        return tempRef.key!
         
     }
  
@@ -183,5 +186,6 @@ class DataService
             }
         }
     }
+    
 }
 

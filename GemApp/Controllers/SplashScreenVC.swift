@@ -35,8 +35,8 @@ class SplashScreenVC: UIViewController {
         
         if DataService.globalData.rockList.count == 0
         {
-            loadRockList(user: user!, path: "rocks")
-            loadRockList(user: user!, path: "users/\(user)/customRocks")
+            loadRockList(user: user!, path: "gems")
+            loadRockList(user: user!, path: "users/\(user!)/customRocks")
 
             /*
             DataService.globalData.REF_ROCKS.queryOrdered(byChild: "color").observe(.value, with: {(snapshot) in
@@ -71,12 +71,18 @@ class SplashScreenVC: UIViewController {
     
     func loadUserData(user: String)
     {
-        DataService.globalData.REF_USERS.child("\(user)").child("rocks").observe(.value, with: {(snapshot) in
+        DataService.globalData.REF_USERS.child("\(user)").child("rocks").observeSingleEvent(of: .value, with: {(snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]
             {
                 for snap in snapshot
                 {
                     let index = DataService.globalData.rockList.firstIndex(where: {$0.key == snap.key})
+                    if index == nil
+                    {
+                         DataService.globalData.removeData(data: snap.key, path: "users/\(DataService.globalData.currentUser)/customGems")
+
+                        continue
+                    }
                     DataService.globalData.rockList[index!].collected = true
                     if (snap.hasChildren())
                     {
@@ -94,9 +100,12 @@ class SplashScreenVC: UIViewController {
     
     func loadRockList(user: String, path: String)
     {
-        DataService.globalData.REF_BASE.child(path).queryOrdered(byChild: "color").observe(.value, with: {(snapshot) in
+        // DataService.globalData.REF_BASE.child(path).queryOrdered(byChild: "color").observe
+        DataService.globalData.REF_BASE.child(path).queryOrdered(byChild: "color").observeSingleEvent(of: .value, with: {(snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]
             {
+             
+
                 for snap in snapshot
                 {
                     let value = snap.value as? NSDictionary
@@ -104,17 +113,30 @@ class SplashScreenVC: UIViewController {
                     let color = value?["color"] as? String
                     let description = value?["description"] as? String
                     let month = value?["month"] as? String
+                  
+                    var tempRock: Rock
                     if (month == nil)
                     {
-                        DataService.globalData.rockList.append(Rock.init(name: name!, description: description!, color: color!, key: snap.key))
+                    tempRock = Rock.init(name: name!, description: description!, color: color!, key: snap.key)
+                     //   DataService.globalData.rockList.append()
                     }
                     else
                     {
-                        DataService.globalData.rockList.append(Rock.init(name: name!, description: description!, color: color!, key: snap.key, month: month!))
+                    tempRock = Rock.init(name: name!, description: description!, color: color!, key: snap.key, month: month!)
+                     //   DataService.globalData.rockList.append()
                     }
+                    if path != "gems"
+                    {
+                    tempRock.custom = true
+                    }
+            
+                    DataService.globalData.rockList.append(tempRock)
                 }
             }
-            self.onDataLoaded(user: user)
+            if path != "gems"
+            {
+                self.onDataLoaded(user: user)
+            }
         })
     }
     
@@ -122,7 +144,8 @@ class SplashScreenVC: UIViewController {
     
     func loadList(user: String, child: String)
     {
-        DataService.globalData.REF_USERS.child("\(user)").child(child).observe(.value, with: {(snapshot) in
+        
+        DataService.globalData.REF_USERS.child("\(user)").child(child).observeSingleEvent(of: .value, with: {(snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]
             {
                 for snap in snapshot
@@ -130,6 +153,12 @@ class SplashScreenVC: UIViewController {
                     let index = DataService.globalData.rockList.firstIndex(where: {$0.key == snap.key})
                     if child == "rocks"
                     {
+                        if index == nil
+                        {
+                            DataService.globalData.removeData(data: snap.key, path: "users/\(DataService.globalData.currentUser)/rocks")
+                            
+                            continue
+                        }
                     DataService.globalData.rockList[index!].collected = true
                     
                     if (snap.hasChildren())
@@ -143,10 +172,20 @@ class SplashScreenVC: UIViewController {
                     }
                     else if child == "wishlist"
                     {
+                        if index == nil
+                        {
+                            DataService.globalData.removeData(data: snap.key, path: "users/\(DataService.globalData.currentUser)/wishlist")
+                
+                        }
                         DataService.globalData.rockList[index!].wishlist = true
                     }
                     else if child == "favorites"
                     {
+                        if index == nil
+                        {
+                            DataService.globalData.removeData(data: snap.key, path: "users/\(DataService.globalData.currentUser)/favorites")
+                            
+                        }
                         DataService.globalData.rockList[index!].favorites = true
                         self.performSegue(withIdentifier: "SplashScreenToMain", sender: nil)
 

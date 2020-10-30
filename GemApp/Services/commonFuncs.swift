@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import MapKit
 
 extension UIViewController
 {
@@ -36,6 +36,7 @@ extension UIViewController
     }
         
 }
+  
 
     @objc func alertControllerBackgroundTapped()
     {
@@ -70,4 +71,55 @@ func hexStringToUIColor (hex:String) -> UIColor
         blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
         alpha: CGFloat(1.0)
     )
+}
+func saveImageToDocumentDirectory(image: UIImage, fileName: String, completion: @escaping (Bool) -> Void) {
+    let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let fileURL = documentsDirectory.appendingPathComponent(fileName)
+    if let data = image.jpegData(compressionQuality: 0.2),!FileManager.default.fileExists(atPath: fileURL.path){
+        do {
+            try data.write(to: fileURL)
+            print("file saved")
+            completion(true)
+        } catch {
+            print("error saving file:", error)
+            completion(false)
+        }
+    }
+    else
+    {
+        completion(false)
+    }
+}
+
+
+func loadImageFromDocumentDirectory(nameOfImage : String) -> UIImage {
+    let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+    let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+    let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+    if let dirPath = paths.first{
+        let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(nameOfImage)
+        let image    = UIImage(contentsOfFile: imageURL.path)
+            if image != nil{
+              return image!
+            }
+        }
+    return UIImage(named: "dia.png")!
+}
+func deleteImageFromDocumentDirectory(nameOfImage : String)
+{
+    let nsDocumentDirectory = FileManager.SearchPathDirectory.documentDirectory
+    let nsUserDomainMask = FileManager.SearchPathDomainMask.userDomainMask
+    let paths = NSSearchPathForDirectoriesInDomains(nsDocumentDirectory, nsUserDomainMask, true)
+    if let dirPath = paths.first{
+        let imageURL = URL(fileURLWithPath: dirPath).appendingPathComponent(nameOfImage)
+        do
+        {
+            try FileManager.default.removeItem(at: imageURL)
+            print("image successfully removed")
+        }
+        catch
+        {
+            print("image could not be removed")
+        }
+    }
 }

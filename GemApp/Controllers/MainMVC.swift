@@ -22,8 +22,10 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
-        reloadList()
+          reloadList()
         tableView.reloadData()
+      
+
         searchBar.text = ""
     }
     override func viewDidLoad()
@@ -166,7 +168,6 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
     }
     func reloadList()
     {
-        
        tempArray.removeAll()
     
         if collection
@@ -205,6 +206,7 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         else
         {
             tempArray = DataService.globalData.rockList
+            
         }
     }
     

@@ -10,7 +10,8 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate, mapTableViewCellDelegate {
+  
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tblPlaces: UITableView!
@@ -48,8 +49,11 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "placecell", for: indexPath) as? mapTableViewCell
         {
+            cell.cellDelegate = self
+            cell.directionsBtn.tag = indexPath.row
             let place = self.resultsArray[indexPath.row]
             cell.updateUi(name: place["name"] as! String, address: place["formatted_address"] as! String)
+            
             
             return cell
         }
@@ -58,8 +62,8 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
+      
         tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
-        
         let place = self.resultsArray[indexPath.row]
         if let locationGeometry = place["geometry"] as? Dictionary<String, AnyObject>
         {
@@ -81,6 +85,16 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                 }
             }
         }
+        let cell = tableView.cellForRow(at: indexPath) as! mapTableViewCell
+        cell.directionsBtn.isHidden = false
+      
+        /*
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "placecell", for: indexPath) as? mapTableViewCell
+        {
+            
+            //cell.directionsBtn.isHidden = false
+        }
+         */
     }
     
     private func configureLocationServices()
@@ -137,7 +151,6 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
                     dct["key"] = x as AnyObject
                     x = x + 1
                     self.resultsArray.append(dct)
-                    print(dct)
                     if let locationGeometry = dct["geometry"] as? Dictionary<String, AnyObject>
                     {
                         if let location = locationGeometry["location"] as? Dictionary<String, AnyObject>
@@ -159,6 +172,10 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         }
         }
     }
+    func didPressButton(_tag: Int) {
+        getDirections()
+    }
+    
 }
 extension MapVC: CLLocationManagerDelegate
 {
@@ -226,7 +243,7 @@ extension MapVC: MKMapViewDelegate
         selectedPin = MKPlacemark(coordinate: annotation.coordinate)
         mapItemName = annotation.title as? String
 
-        annotationView?.image = UIImage(named: "small_dia")
+        annotationView?.image = UIImage(named: "collection.png")
         let smallSquare = CGSize(width: 30, height: 30)
         let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: smallSquare))
         button.setBackgroundImage(UIImage(named: "directions"), for: .normal)
@@ -236,6 +253,7 @@ extension MapVC: MKMapViewDelegate
         return annotationView
 
     }
+    
     @objc func getDirections()
     {
         if let selectedPin = selectedPin
@@ -257,13 +275,15 @@ extension MapVC: MKMapViewDelegate
         
         let indexP = IndexPath(row: index[0]["key"] as! Int, section: 0)
         tblPlaces.scrollToRow(at: indexP, at: UITableView.ScrollPosition.top, animated: true)
+        
+            
         self.tblPlaces.delegate?.tableView!(self.self.tblPlaces, didSelectRowAt: indexP)
         }
    
     }
 }
-
-
-
+protocol mapTableViewCellDelegate : class {
+    func didPressButton(_tag: Int)
+}
 
 

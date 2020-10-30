@@ -10,27 +10,26 @@ import UIKit
 
 class mapTableViewCell: UITableViewCell {
 
-
+    var cellDelegate: mapTableViewCellDelegate?
+    @IBOutlet weak var directionsBtn: UIButton!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
     
-    @IBOutlet weak var distanceLbl: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool)
-    {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
     func updateUi(name: String, address: String)
     {
         nameLbl.text = name
         addressLbl.text = address
+        directionsBtn.isHidden = true
         
     }
  
+    @IBAction func directionsTapped(_ sender: UIButton) {
+        cellDelegate?.didPressButton(_tag: sender.tag)
+    }
     
 }

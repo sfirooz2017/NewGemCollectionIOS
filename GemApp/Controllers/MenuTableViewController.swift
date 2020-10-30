@@ -34,6 +34,17 @@ class MenuTableViewController: UITableViewController {
             sendAlert(title: "Access not granted", message: "Create an account to access collection feature!")
             return false
         }
+        else if DataService.globalData.currentUser == "nil" &&  identifier == "wishlistShow"
+        {
+            sendAlert(title: "Access not granted", message: "Create an account to access wishlist feature!")
+            return false
+        }
+        else if DataService.globalData.currentUser == "nil" &&  identifier == "favoritesShow"
+        {
+            sendAlert(title: "Access not granted", message: "Create an account to access favorites feature!")
+            return false
+            
+        }
         return true
     }
     

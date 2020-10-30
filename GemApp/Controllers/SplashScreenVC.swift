@@ -23,10 +23,10 @@ class SplashScreenVC: UIViewController {
 
            // loadUserData(user: user!)
         }
-        else
-        {
-            self.performSegue(withIdentifier: "SplashScreenToMain", sender: nil)
-        }
+       // else
+        //{
+         //   self.performSegue(withIdentifier: "SplashScreenToMain", sender: nil)
+       // }
     }
     
     override func viewDidAppear(_ animated: Bool)
@@ -35,8 +35,11 @@ class SplashScreenVC: UIViewController {
         
         if DataService.globalData.rockList.count == 0
         {
-            loadRockList(user: user!, path: "gems")
-            loadRockList(user: user!, path: "users/\(user!)/customRocks")
+            loadRockList(user: user, path: "gems")
+            if user != nil
+            {
+            loadRockList(user: user, path: "users/\(user!)/customRocks")
+            }
 
             /*
             DataService.globalData.REF_ROCKS.queryOrdered(byChild: "color").observe(.value, with: {(snapshot) in
@@ -98,7 +101,7 @@ class SplashScreenVC: UIViewController {
         })
     }
     
-    func loadRockList(user: String, path: String)
+    func loadRockList(user: String?, path: String)
     {
         // DataService.globalData.REF_BASE.child(path).queryOrdered(byChild: "color").observe
         DataService.globalData.REF_BASE.child(path).queryOrdered(byChild: "color").observeSingleEvent(of: .value, with: {(snapshot) in
@@ -132,6 +135,9 @@ class SplashScreenVC: UIViewController {
             
                     DataService.globalData.rockList.append(tempRock)
                 }
+            }
+            if user == nil{
+                self.performSegue(withIdentifier: "SplashScreenToMain", sender: nil)
             }
             if path != "gems"
             {
@@ -177,7 +183,10 @@ class SplashScreenVC: UIViewController {
                             DataService.globalData.removeData(data: snap.key, path: "users/\(DataService.globalData.currentUser)/wishlist")
                 
                         }
+                        else
+                        {
                         DataService.globalData.rockList[index!].wishlist = true
+                        }
                     }
                     else if child == "favorites"
                     {
@@ -186,7 +195,10 @@ class SplashScreenVC: UIViewController {
                             DataService.globalData.removeData(data: snap.key, path: "users/\(DataService.globalData.currentUser)/favorites")
                             
                         }
+                        else
+                        {
                         DataService.globalData.rockList[index!].favorites = true
+                        }
                         self.performSegue(withIdentifier: "SplashScreenToMain", sender: nil)
 
                     }

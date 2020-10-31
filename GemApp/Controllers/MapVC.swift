@@ -87,6 +87,13 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate, mapTa
         }
         let cell = tableView.cellForRow(at: indexPath) as! mapTableViewCell
         cell.directionsBtn.isHidden = false
+        for index in tableView.indexPathsForVisibleRows!
+        {
+            if index != indexPath
+            {
+                (tableView.cellForRow(at: index) as! mapTableViewCell).directionsBtn.isHidden = true
+            }
+        }
       
         /*
         if let cell = tableView.dequeueReusableCell(withIdentifier: "placecell", for: indexPath) as? mapTableViewCell

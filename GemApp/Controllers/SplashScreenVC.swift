@@ -151,7 +151,7 @@ class SplashScreenVC: UIViewController {
     func loadList(user: String, child: String)
     {
         
-        DataService.globalData.REF_USERS.child("\(user)").child(child).observeSingleEvent(of: .value, with: {(snapshot) in
+        DataService.globalData.REF_USERS.child("\(user)").child(child).observe(.value, with: {(snapshot) in
             if let snapshot = snapshot.children.allObjects as? [DataSnapshot]
             {
                 for snap in snapshot

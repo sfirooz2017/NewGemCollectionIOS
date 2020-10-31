@@ -35,6 +35,8 @@ class CustomGemVC: UIViewController, UITextViewDelegate {
         descField.delegate = self
         
         self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(submit)), animated: true)
+        
+        self.hideKeyboardWhenTappedAround()
      
         descField.textColor = UIColor.lightGray
         

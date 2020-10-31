@@ -12,6 +12,9 @@ import UIKit
 class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
 
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    
+    @IBOutlet weak var addGemBtn: UIBarButtonItem!
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var tempArray = [Rock]()
@@ -43,6 +46,10 @@ class MainMVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UIS
         else if favorites
         {
             title = "Favorites"
+        }
+        if DataService.globalData.currentUser == "nil"{
+            self.navigationItem.rightBarButtonItem = nil
+            
         }
 
         sideMenus()

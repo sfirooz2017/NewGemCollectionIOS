@@ -145,6 +145,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addGemBtn" destination="YKI-1k-JVh" id="4Wq-l0-375"/>
                         <outlet property="menuButton" destination="AmG-i4-pJJ" id="tUh-mR-ie8"/>
                         <outlet property="searchBar" destination="TTu-mq-IgA" id="mXQ-BZ-N8J"/>
                         <outlet property="tableView" destination="0mP-Zx-9mO" id="WL7-h6-deN"/>
@@ -1363,9 +1364,8 @@
         <image name="upload" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1mq-qb-Ouh"/>
         <segue reference="zc8-H2-bmi"/>
-        <segue reference="mC7-ZE-GB8"/>
+        <segue reference="EyI-O3-x84"/>
         <segue reference="cDu-xX-1kn"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

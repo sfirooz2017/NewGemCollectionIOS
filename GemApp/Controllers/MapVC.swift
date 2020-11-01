@@ -63,6 +63,18 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate, mapTa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
       
+        if let cell = tableView.cellForRow(at: indexPath) as? mapTableViewCell
+        {
+            cell.directionsBtn.isHidden = false
+            for index in tableView.indexPathsForVisibleRows!
+            {
+                if index != indexPath
+                {
+                    (tableView.cellForRow(at: index) as! mapTableViewCell).directionsBtn.isHidden = true
+                }
+            }
+        }
+        
         tableView.scrollToRow(at: indexPath, at: UITableView.ScrollPosition.top, animated: true)
         let place = self.resultsArray[indexPath.row]
         if let locationGeometry = place["geometry"] as? Dictionary<String, AnyObject>
@@ -79,19 +91,11 @@ class MapVC: UIViewController, UITableViewDataSource, UITableViewDelegate, mapTa
                        
                         let mapItem = MKMapItem(placemark: p)
                         mapItem.name = place["name"] as? String
+                        mapItemName = mapItem.name
                         zoomToLatestLocation(coordinate: l.coordinate, latRange: 200, longRange: 200)
                      
                     }
                 }
-            }
-        }
-        let cell = tableView.cellForRow(at: indexPath) as! mapTableViewCell
-        cell.directionsBtn.isHidden = false
-        for index in tableView.indexPathsForVisibleRows!
-        {
-            if index != indexPath
-            {
-                (tableView.cellForRow(at: index) as! mapTableViewCell).directionsBtn.isHidden = true
             }
         }
       
